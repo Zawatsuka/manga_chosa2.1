@@ -12,7 +12,8 @@ ob_start();
                 }else{
                     include(dirname(__FILE__).'/../template/formInscription.php');  
                 }
-                    ?>
+                    
+            ?>
                
         </div>
     </div>

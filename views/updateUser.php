@@ -15,6 +15,8 @@ if(isset($isOk)){
                 <div class="container-fluid ml-3">
                     <div class="row">
                         <h2 class="mt-2">Modification</h2>
+
+                       <!-- --------------- partie mail ---------- -->
                         <div class="input-group mt-3">
                             <input type="text" class="form-control" 
                             placeholder="Adresse Email ╰( ･ ᗜ ･ )╯"
@@ -31,7 +33,7 @@ if(isset($isOk)){
                         }
                     ?></p>
 
-
+                        <!-- ----------------partie pseudo------------------- -->
                         <div class="input-group mt-3">
                             <input type="text"
                              class="form-control"
@@ -51,6 +53,7 @@ if(isset($isOk)){
                         }
                     ?></p>
 
+                        <!-- ------------------partie Civilité----------------- -->
                         <div class="input-group mb-3 mt-3">
                             <select class="custom-select" id="inputGroupSelect02" name="gender" required>
                                 <option selected><?=$viewUser->gender;?></option>
@@ -67,7 +70,7 @@ if(isset($isOk)){
                         }
                     ?></p>
 
-
+                        <!-- ----------------partie date de naissance-------------- -->
                         <h3 class="mt-2">Anniversaire</h3>
                         <div class="input-group mt-2">
                             <input type="date"
@@ -86,6 +89,10 @@ if(isset($isOk)){
                            echo $errorsArray['birthdate_error'];              
                         }
                     ?></p>
+
+
+
+                    
                         <button type="submit" class="btn btn-outline-secondary mt-3">Modifier </button>
                     </div>
                 </div>
