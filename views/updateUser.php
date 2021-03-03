@@ -89,10 +89,31 @@ if(isset($isOk)){
                            echo $errorsArray['birthdate_error'];              
                         }
                     ?></p>
+                         <h3 class="mt-2">Mot de passe</h3>
+                        <div class="input-group mt-2">
+                            <input type="Password"
+                             class="form-control"
+                                aria-label="Dollar amount (with dot and two decimal places)" 
+                                name="lastPassword"
+                                 placeholder="Ancien mot de passe">
+                        </div>
+                        <div class="input-group mt-2">
+                            <input type="password"
+                             class="form-control"
+                                aria-label="Dollar amount (with dot and two decimal places)" 
+                                name="password"
+                                 placeholder="Nouveau mot de passe">
+                        </div>
+                        <div class="input-group mt-2">
+                            <input type="password"
+                             class="form-control"
+                                aria-label="Dollar amount (with dot and two decimal places)" 
+                                name="secondPassword"
+                                 placeholder="Retape le on sait jamais ^^">
+                        </div>
 
 
 
-                    
                         <button type="submit" class="btn btn-outline-secondary mt-3">Modifier </button>
                     </div>
                 </div>

@@ -1,10 +1,10 @@
 <footer class="container-fluid slideInRight">
     <div class="row bg-footer">
         <!-- partie gauche du footer -->
-        <h5 class="p-3 text-change text-light d-block d-sm-block d-md-none">Hésite pas à nous retrouver sur les
+        <h5 class="p-3 text-change text-light d-block d-sm-block d-md-none">Hésites pas à nous retrouver sur les
             réseaux !</h5>
         <div class="col-6 text-footer">
-            <h5 class="p-3 text-change text-light d-none d-sm-none d-md-block">Hésite pas à nous retrouver sur les
+            <h5 class="p-3 text-change text-light d-none d-sm-none d-md-block">Hésites pas à nous retrouver sur les
                 réseaux !</h5>
             <div class="d-flex align-item-center mt-4">
                 <img src="../../assets/img/facebook.png" class="" width="30" height="30" alt="">

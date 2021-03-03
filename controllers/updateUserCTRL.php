@@ -5,8 +5,8 @@ setlocale(LC_TIME, 'fr_FR.utf8', 'fra.utf8');
 
 
 $idUser= intval(trim(filter_input(INPUT_GET,'idUser',FILTER_SANITIZE_NUMBER_INT)));
-
-
+$userObj = new User();
+$viewUser = $userObj->UserPage($idUser);
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $errorsArray = array();
@@ -24,22 +24,52 @@ if(!empty($mail)){
     $errorsArray['mail_error'] = 'Le champ n\'est pas rempli';
 }
 
+// -------------verification de l'ancien mot de passe-----------------
+$lastPassword= trim(filter_input(INPUT_POST,'lastPassword', FILTER_SANITIZE_STRING));
 
-
-// -------------verification du mot de passe-----------------
-// $password= trim(filter_input(INPUT_POST,'password', FILTER_SANITIZE_STRING));
-
-// if(!empty($password)){
-//     $testRegex = preg_match($regexPassword,$password);
+if(!empty($lastPassword)){
+    $testRegex = preg_match($regexPassword,$lastPassword);
     
-//     if($testRegex == false){
-//         $errorsArray['password_error'] = 'Le password n\'est pas valide';
-//     }else{
-//         $pass_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
-//     }
-// }else{
-//     $errorsArray['password_error'] = 'Le champ n\'est pas rempli';
-// }
+    if($testRegex == false){
+        $errorsArray['password_error'] = 'Le password n\'est pas valide';
+    }else{
+        $pass_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    }
+}else{
+    $errorsArray['password_error'] = 'Le champ n\'est pas rempli';
+}
+
+
+// -------------verification du nouveau mot de passe-----------------
+$password= trim(filter_input(INPUT_POST,'password', FILTER_SANITIZE_STRING));
+
+if(!empty($password)){
+    $testRegex = preg_match($regexPassword,$password);
+    
+    if($testRegex == false){
+        $errorsArray['password_error'] = 'Le password n\'est pas valide';
+    }else{
+        $pass_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    }
+}else{
+    $errorsArray['password_error'] = 'Le champ n\'est pas rempli';
+}
+
+
+// ------------------second mot de passe--------------------
+$secondPassword= trim(filter_input(INPUT_POST,'secondPassword', FILTER_SANITIZE_STRING));
+
+if(!empty($secondPassword)){
+    $testRegex = preg_match($regexPassword,$secondPassword);
+    
+    if($testRegex == false){
+        $errorsArray['password_error'] = 'Le password n\'est pas valide';
+    }else{
+        $pass_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    }
+}else{
+    $errorsArray['password_error'] = 'Le champ n\'est pas rempli';
+}
 
 
 // ----------------------------verification du genre--------------------
@@ -81,9 +111,16 @@ if(!empty($birthdate)){
     $errorsArray['birthdate_error'] = 'Le champ n\'est pas rempli';
 }
 
-if(empty($errorsArray)){
+$verifyPassword= password_verify($lastPassword,$viewUser->password);
+
+if(empty($errorsArray) && $verifyPassword==true && $password==$secondPassword){
+    
 // j'ajoute false pour dire que le user n'est pas admin 
-$usertab = new User($mail,$birthdate,$gender,$pseudo); 
+if (empty($password)){
+    $usertab = new User($mail,$birthdate,$gender,$pseudo,$viewUser->password);
+}else{
+    $usertab = new User($mail,$birthdate,$gender,$pseudo,$pass_hash); 
+}  
 // var_dump($usertab); 
 $testRegister = $usertab->updateUser($idUser);
 $isOk= '<div class=" slideInDown alert alert-success" role="alert">
