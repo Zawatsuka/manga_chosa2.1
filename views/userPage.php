@@ -26,6 +26,12 @@ ob_start();
                                     alt="modifier">
                             </p>
                         </a>
+                        <a class="text-secondary" href="/controllers/modifyPasswordCTRL.php?idUser=<?=$viewUser->id;?>">
+                            <p class="card-text">
+                                modifier mot de passe <img src="/assets/img/update_1.png" class="img-fluid" width="20"
+                                    alt="modifier">
+                            </p>
+                        </a>
                         <a class="btn btn-secondary mt-3" data-toggle="collapse" href="#collapseExample" role="button"
                             aria-expanded="false" aria-controls="collapseExample">
                             Vos Informations <img src="/assets/img/plus_1.png" class="img-fluid" width="15" alt="plus">

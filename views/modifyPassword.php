@@ -1,25 +1,32 @@
-<div class="input-group mb-3 mt-3">
-    <input type="password" class="form-control" placeholder="Mot de passe" aria-label="Recipient's username"
-        aria-describedby="button-addon2" name="password" required>
-</div>
-<p class="sizeMP ml-2">Dans le mot de passe il doit y avoir...</p>
-<ul>
-    <li class="sizeMP">Minimum 8 caracteres</li>
-    <li class="sizeMP">Des lettres et des majuscules</li>
-    <li class="sizeMP">Des chiffres</li>
-    <li class="sizeMP">Des caracteres speciaux(#?!@$%^&*-)</li>
-</ul>
-<p class="text-danger"><?php if(isset($errorsArray['password_error'])){
-                           echo $errorsArray['password_error'];              
-                        }
-                    ?></p>
+<?php
+$typeRight= true;
+ob_start();
+?>
+<div class="container">
+    <div class="row">
+        <div class="col-10">
+          <?php
+          
+          if(isset($pass_verify)&& $pass_verify==true){
+            include(dirname(__FILE__).'/../template/formUpdateMP.php');
+        }else if(isset($pass_verify)&& $pass_verify==false){
+          ?>
+            <div class="alert alert-danger" role="alert">
+            Mauvais mot de passe ٩(๑`^´๑)۶
 
+          </div>
+          <?php
+            include(dirname(__FILE__).'/../template/formMP.php'); 
+        }else{
+            include(dirname(__FILE__).'/../template/formMP.php'); 
+        }
+            ?>
 
-<div class="input-group mb-3 ">
-    <input type="password" class="form-control" placeholder="Retape le, on sait jamais ^^"
-        aria-label="Recipient's username" aria-describedby="button-addon2" name="password" required>
+        </div>
+
+    </div>
 </div>
-<p class="text-danger"><?php if(isset($errorsArray['password_error'])){
-                           echo $errorsArray['password_error'];              
-                        }
-                    ?></p>
+<?php
+$mainContent = ob_get_clean();
+require('../template/main.php');
+?>
