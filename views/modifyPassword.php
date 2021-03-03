@@ -1,6 +1,9 @@
 <?php
 $typeRight= true;
 ob_start();
+if(isset($isOk)){
+  echo $isOk;
+}
 ?>
 <div class="container">
     <div class="row">

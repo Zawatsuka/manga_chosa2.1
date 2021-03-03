@@ -83,4 +83,17 @@ class User{
             return $e->getMessage();
         }
     }
+
+    public function updatePasswordUser($idUser){
+        try{
+            $sql = "UPDATE `user` SET `password`=:password
+            WHERE `id` = :id;";
+            $stmt = $this->_pdo->prepare($sql);
+            $stmt->bindValue(':password',$this->_password , PDO::PARAM_STR);
+            $stmt -> bindValue(':id',$idUser, PDO::PARAM_INT);
+            return $stmt->execute();
+        }catch(PDOException $e){
+            return $e->getMessage();
+        }
+    }
 }
