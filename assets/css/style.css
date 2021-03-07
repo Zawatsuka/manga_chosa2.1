@@ -1,6 +1,7 @@
-*{
+* {
     box-sizing: border-box;
 }
+
 html,
 body {
     margin: auto;
@@ -120,29 +121,36 @@ a:hover {
     left: 50%;
     transform: translateX(-50%);
 }
-.connexion-form{
+
+.connexion-form {
     border-style: none;
     border-radius: 15px;
     border-style: none;
     background-color: rgb(214, 214, 214);
 }
-.color-link{
+
+.color-link {
     color: rgb(173, 173, 173);
 }
-.margin-link{
+
+.margin-link {
     margin: 35%;
 }
-.button-margin{
+
+.button-margin {
     margin-left: 30%;
 }
-.marg-img-connect{
+
+.marg-img-connect {
     margin-top: 39%;
 }
-.button-connect{
+
+.button-connect {
     background-color: rgb(214, 214, 214);
     border-style: none;
     border-radius: 20px;
 }
+
 @media screen and (min-width: 1200px) and (max-width: 4000px) {
     main {
         display: grid;
@@ -208,6 +216,7 @@ a:hover {
         border-radius: .25rem;
     }
 }
+
 .input-inscript {
     border-radius: 15px;
     border-style: none;
@@ -219,15 +228,39 @@ a:hover {
     border-style: none;
     background-color: rgb(214, 214, 214);
 }
-.text-check{
+
+.text-check {
     font-size: 14px;
 }
-.text-checkto{
+
+.text-checkto {
     font-size: 11px;
 }
-ul{
+
+ul {
     list-style-type: none;
 }
-.sizeMP{
-    font-size: 10px;
+
+.sizeMP {
+    font-size: 13px;
+}
+
+.valid {
+    color: #007900;
+}
+
+.valid:before {
+    position: relative;
+    left: -10px;
+    content: "✔";
+}
+
+.invalid {
+    color: #ee6666;
+}
+
+.invalid:before {
+    position: relative;
+    left: -10px;
+    content: "✖";
 }
