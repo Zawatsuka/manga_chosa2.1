@@ -46,32 +46,9 @@ ob_start();
 
             <!-- partie commentaires -->
             <!-- partie envoi de message en pc  -->
-            <div class="d-flex align-items-center ml-3 mt-3 fadeInLeft">
-                <h2 class="title-comment d-none d-sm-none d-md-block">Commentaires </h2>
-                <input class="ml-4 d-none d-sm-none d-md-block" type="text" placeholder="Ton commentaire..." size="55">
-                <a href="#"><img src="../../assets/img/fleche.png" class="img-fluid zoom d-none d-sm-none d-md-block"
-                        width="30" alt=""></a>
-            </div>
-            <!-- partie envoi de message en mobile  -->
-            <div class="fadeInLeft">
-                <h2 class="title-comment text-center d-block d-sm-block d-md-none">Commentaires </h2>
-                <div class="d-flex justify-content-center">
-                    <input class="ml-4 d-block d-sm-block d-md-none" type="text" placeholder="ton commentaire..."
-                        size="30">
-                    <a href="#"><img src="../../assets/img/fleche.png"
-                            class="img-fluid zoom d-block d-sm-block d-md-none" width="30" alt=""></a>
-                </div>
-            </div>
-            <div class="bg-comment mt-3 mr-3 ml-3 fadeInLeft bg-border">
-                <div>
-                    <div class="d-flex align-center">
-                        <img src="../../assets/img/mr-Robot.png" width="50" class="img-fluid mt-4 ml-4" alt="">
-                        <h3 class="mt-4 ml-4 text-comment">Mr_Robot_23</h3>
-                    </div>
-                    <p class="comment "> Trop cool !</p>
-
-                </div>
-            </div>
+            <?php
+            include(dirname(__FILE__).'/../controllers/commentviewsCTRL.php');
+            ?>
         </div>
     </div>
 </div>

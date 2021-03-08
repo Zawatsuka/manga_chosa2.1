@@ -1,4 +1,4 @@
-<footer class="container-fluid slideInRight">
+<footer class="container-fluid">
     <div class="row bg-footer">
         <!-- partie gauche du footer -->
         <h5 class="p-3 text-change text-light d-block d-sm-block d-md-none">Hésites pas à nous retrouver sur les
