@@ -85,4 +85,23 @@ class User{
             return $e->getMessage();
         }
     }
+
+    public function getUserLogin($mail, $password){
+
+        $sql = "SELECT *  FROM `user` WHERE `mail` = :mail ;";
+        $stmt = $this->_pdo->prepare($sql);
+
+        // association des paramètres  
+        $stmt->bindValue(':mail', $mail, PDO::PARAM_STR);
+        if($stmt->execute()){ // envoie de la requête
+            $user = $stmt->fetch();
+            if($user){
+                // retourne l'id user si le mot de passe est vérifié
+                if(password_verify($password, $user->password)){
+                    return $user;
+                } 
+            }
+        }
+        return false;
+    }
 }

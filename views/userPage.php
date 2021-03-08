@@ -2,9 +2,9 @@
 $typeRight= true;
 ob_start();
 ?>
-<a class="ml-3" href="/controllers/listOfUserCTRL.php">
+<!-- <a class="ml-3" href="/controllers/listOfUserCTRL.php">
     <img src="/assets/img/fleche2.png" class="img-fluid mt-3 zoom" width="40" alt="fleche de retour">
-</a>
+</a> -->
 
 
 <div class="container text-center flipInX m-3 mt-5">

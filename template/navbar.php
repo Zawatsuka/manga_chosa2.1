@@ -34,6 +34,9 @@
                         <li class="nav-item zoom">
                         <a class="nav-link text-white text-change ml-md-5" href="/controllers/userPageCTRL.php?idUser=<?=$_SESSION['id']?>"><?= $_SESSION['pseudo']?></a>
                     </li>
+                    <li class="nav-item zoom">
+                        <a class="nav-link text-danger text-change ml-md-5" href="/controllers/disconnectCTRL.php">Deconnection</a>
+                    </li>
                     <?php }?>
                 </ul>
             </div>
