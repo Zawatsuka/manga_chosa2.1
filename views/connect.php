@@ -19,7 +19,9 @@ ob_start();
                 <div class="input-group mb-3">
                     <input type="password" class="form-control" placeholder="Mot de Passe ᕙ༼*◕_◕*༽ᕤ"
                         aria-label="Mot de Passe ᕙ༼*◕_◕*༽ᕤ" aria-describedby="basic-addon1" name="password">
+                    
                 </div>
+                <div><a class="text-secondary" href="/controllers/forgotpasswordCTRL.php">Mot de passe oublié ?</a></div>
                 <button type="submit" class="btn btn-outline-secondary mt-3">Connexion </button>
         </div>
         </form>
