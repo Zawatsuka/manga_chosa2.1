@@ -1,4 +1,5 @@
 <?php
+    session_start();
 include('../utils/regex.php');
 include('../models/User.php');
 setlocale(LC_TIME, 'fr_FR.utf8', 'fra.utf8');

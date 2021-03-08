@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require_once(dirname(__FILE__).'/../models/User.php');
     $userObj = new User();
     $idUser= intval(trim(filter_input(INPUT_GET,'idUser',FILTER_SANITIZE_NUMBER_INT)));

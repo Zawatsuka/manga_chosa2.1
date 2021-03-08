@@ -26,7 +26,6 @@ var tinyCase=document.getElementById('tinyCase');
 var number=document.getElementById('number');
 var specialCharacter=document.getElementById('specialCharacter');
 var passwordInput= document.getElementById('pass');
-var listSizeMP = document.querySelectorAll('.sizeMP');
 
 
 passwordInput.addEventListener('keyup',(e)=>{

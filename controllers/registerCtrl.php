@@ -1,6 +1,7 @@
 <?php  
-include('../utils/regex.php');
-include('../models/User.php');
+session_start();
+require_once('../utils/regex.php');
+require_once('../models/User.php');
 
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -81,10 +82,17 @@ if(isset($pass_hash) && empty($errorsArray)){
 // j'ajoute false pour dire que le user n'est pas admin 
 $user = new User($mail,$birthdate,$gender,$pseudo,$pass_hash,false);   
 $testRegister = $user->addUser();
-}else{
-    $error = '<p class="text-danger mt-2">Erreur au chargement</p>';
 }
+    if($testRegister==false){
+        $errorsArray['register_error'] = 'Enregistrement impossible (le mail existe déjà ?)';
+    }
+    if(empty($errorsArray)){
+        $_SESSION['id'] = $testRegister;
+        $_SESSION['pseudo'] = $pseudo;
+    }
+
 }
+
 
     include(dirname(__FILE__).'/../template/header.php');
     include(dirname(__FILE__).'/../views/register.php');

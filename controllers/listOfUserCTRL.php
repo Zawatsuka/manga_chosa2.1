@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require_once(dirname(__FILE__).'/../models/User.php');
     $userObj = new User();
     //  supprimer un inscrit

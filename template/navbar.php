@@ -23,12 +23,18 @@
                         <a class="nav-link text-white text-change ml-md-5" href="/controllers/lastSurveyCtrl.php">Derniers
                             Sondages</a>
                     </li>
+                    <?php if(!isset($_SESSION['pseudo'])){?>
                     <li class="nav-item zoom">
                         <a class="nav-link text-white text-change ml-md-5" href="/controllers/connectCtrl.php">Connexion</a>
                     </li>
                     <li class="nav-item zoom">
                         <a class="nav-link text-white text-change ml-md-5" href="/controllers/registerCtrl.php">Inscris toi ?</a>
                     </li>
+                    <?php }else{?>
+                        <li class="nav-item zoom">
+                        <a class="nav-link text-white text-change ml-md-5" href="/controllers/userPageCTRL.php?idUser=<?=$_SESSION['id']?>"><?= $_SESSION['pseudo']?></a>
+                    </li>
+                    <?php }?>
                 </ul>
             </div>
         </nav>
