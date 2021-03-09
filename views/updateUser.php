@@ -106,7 +106,7 @@ if(isset($isOk)){
 
 
 
-                        <button type="submit" class="btn btn-outline-secondary mt-3">Modifier </button>
+                        <button type="submit" class="btn btn-outline-secondary mt-3 mb-3">Modifier </button>
                     </div>
                 </div>
             </form>
