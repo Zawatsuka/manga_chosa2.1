@@ -11,8 +11,14 @@ ob_start();
     <div class="row">
         <div class="card mb-3" style="max-width: 540px;">
             <div class="row no-gutters">
-                <div class="col-md-4">
+                <div class="col-md-4"> 
+                <?php
+                $file='../assets/upload/profil-'.$viewUser->id.'.jpg';
+                if(file_exists($file)==true){?>
+                    <img src="/assets/upload/profil-<?=$viewUser->id?>.jpg" class=" mt-3 m-3 ml-4 img-fluid" width="400" alt="">
+                    <?php }else{ ?>
                     <img src="/assets/img/user2.png" class="m-3 ml-4  img-fluid" width="200" alt="user">
+                   <?php }?>
                 </div>
                 <div class="col-md-8">
                     <div class="card-body p-5">
@@ -20,7 +26,11 @@ ob_start();
                         <p class="card-text">
                             <?php
             if($viewUser->admin ==1){
-                echo '<a class="text-secondary" href="/controllers/listOfUserCTRL.php">Administration du site</a>'; 
+                echo '<p>
+                        <a class="text-secondary" href="/controllers/listOfUserCTRL.php">Administration du site</a>
+                    </p>';
+                    
+                echo '<p><a class="text-secondary" href="/controllers/CreateSurveyCTRL.php">Creation d\'un sondage</a></p>'; 
             }?>
                         </p>
                         <p class="card-text">

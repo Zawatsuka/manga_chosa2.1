@@ -11,7 +11,17 @@ $viewUser = $userObj->UserPage($idUser);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $errorsArray = array();
-
+    if(isset($_FILES)){
+        $tmpName = $_FILES['profilImg']['tmp_name'];
+        $name ='profil-'. $viewUser->id.'.jpg';
+        $size = $_FILES['profilImg']['size'];
+        $error = $_FILES['profilImg']['error'];
+        move_uploaded_file($tmpName, dirname(__FILE__).'/../assets/upload/'.$name);
+        $im_php = imagecreatefromjpeg('../assets/upload/'.$name);
+        $size = min(imagesx($im_php), imagesy($im_php));
+        $im_php = imagecrop($im_php, ['x' => $size*0.4, 'y' => 0, 'width' => $size, 'height' => $size]);
+        $im_php = imagescale($im_php, 300);
+    }
 
 
 

@@ -20,7 +20,18 @@ ob_start();
                     foreach($listUser as $value){
                       ?>
                 <tr>
-                    <td><a href="/controllers/userPageCTRL.php?idUser=<?=$value->id?>"><img src="/assets/img/user.png" width="20" class="img-fluid" alt=""></a> <?= $value->pseudo ?></td>
+                    <td>
+                        <a href="/controllers/userPageCTRL.php?idUser=<?=$value->id?>">
+                            <?php
+                            $file='../assets/upload/profil-'.$value->id.'.jpg';
+                            if(file_exists($file)==true){?>
+                                <img src="/assets/upload/profil-<?=$value->id?>.jpg" class=" mt-3 m-3 ml-4 img-fluid" width="20" alt="">
+                                <?php }else{ ?>
+                                <img src="/assets/img/user.png" class="m-3 ml-4  img-fluid" width="20" alt="user">
+                               <?php }?>
+                        </a> 
+                        <?= $value->pseudo ?>
+                    </td>
                     <td><?= $value->mail ?></td>
                     <td><?= $value->gender ?></td>
                     <td><?= $value->birthDate ?></td>

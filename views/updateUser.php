@@ -8,22 +8,27 @@ if(isset($isOk)){
 <div class="container-fluid fadeInLeft">
     <div class="row">
         <div class="col-10">
-            <form method="POST">
-            <a class="ml-3" href="/controllers/userPageCTRL.php?idUser=<?=$viewUser->id;?>">
+            <form method="POST" enctype="multipart/form-data">
+                <a class="ml-3" href="/controllers/userPageCTRL.php?idUser=<?=$viewUser->id;?>">
                     <img src="/assets/img/fleche2.png" class="img-fluid mt-3 zoom" width="40" alt="fleche de retour">
-                    </a>
+                </a>
                 <div class="container-fluid ml-3">
                     <div class="row">
                         <h2 class="mt-2">Modification</h2>
+                        <!-- partie upload d'image  -->
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="inputGroupFile04"
+                                    aria-describedby="inputGroupFileAddon04" name="profilImg">
+                                <label class="custom-file-label" for="inputGroupFile04">Changer son image de profil ?</label>
+                            </div>
+                        </div>
 
-                       <!-- --------------- partie mail ---------- -->
+                        <!-- --------------- partie mail ---------- -->
                         <div class="input-group mt-3">
-                            <input type="text" class="form-control" 
-                            placeholder="Adresse Email ╰( ･ ᗜ ･ )╯"
-                                aria-label="Dollar amount (with dot and two decimal places)"
-                                 name="mail"
-                                 value="<?=$viewUser->mail;?>"
-                                  required>
+                            <input type="text" class="form-control" placeholder="Adresse Email ╰( ･ ᗜ ･ )╯"
+                                aria-label="Dollar amount (with dot and two decimal places)" name="mail"
+                                value="<?=$viewUser->mail;?>" required>
                             <div class="input-group-append">
                                 <span class="input-group-text">@</span>
                             </div>
@@ -35,13 +40,9 @@ if(isset($isOk)){
 
                         <!-- ----------------partie pseudo------------------- -->
                         <div class="input-group mt-3">
-                            <input type="text"
-                             class="form-control"
-                              placeholder="Pseudo ( ͡~ ͜ʖ ͡~)"
-                                aria-label="Dollar amount (with dot and two decimal places)" 
-                                name="pseudo" 
-                                value="<?=$viewUser->pseudo;?>"
-                                required>
+                            <input type="text" class="form-control" placeholder="Pseudo ( ͡~ ͜ʖ ͡~)"
+                                aria-label="Dollar amount (with dot and two decimal places)" name="pseudo"
+                                value="<?=$viewUser->pseudo;?>" required>
                             <div class="input-group-append">
                                 <span class="input-group-text">
                                     <img src="/assets/img/user.png" class="img-fluid" width="15" alt="user">
@@ -73,12 +74,9 @@ if(isset($isOk)){
                         <!-- ----------------partie date de naissance-------------- -->
                         <h3 class="mt-2">Anniversaire</h3>
                         <div class="input-group mt-2">
-                            <input type="date"
-                             class="form-control"
-                                aria-label="Dollar amount (with dot and two decimal places)" 
-                                name="birthdate"
-                                value="<?= $viewUser->birthDate?>"
-                                 required>
+                            <input type="date" class="form-control"
+                                aria-label="Dollar amount (with dot and two decimal places)" name="birthdate"
+                                value="<?= $viewUser->birthDate?>" required>
                             <div class="input-group-append">
                                 <span class="input-group-text">
                                     <img src="/assets/img/cakeisalie-100.jpg" class="img-fluid" width="15" alt="gateau">
@@ -89,27 +87,21 @@ if(isset($isOk)){
                            echo $errorsArray['birthdate_error'];              
                         }
                     ?></p>
-                         <h3 class="mt-2">Mot de passe</h3>
+                        <h3 class="mt-2">Mot de passe</h3>
                         <div class="input-group mt-2">
-                            <input type="Password"
-                             class="form-control"
-                                aria-label="Dollar amount (with dot and two decimal places)" 
-                                name="lastPassword"
-                                 placeholder="Ancien mot de passe">
+                            <input type="Password" class="form-control"
+                                aria-label="Dollar amount (with dot and two decimal places)" name="lastPassword"
+                                placeholder="Ancien mot de passe">
                         </div>
                         <div class="input-group mt-2">
-                            <input type="password"
-                             class="form-control"
-                                aria-label="Dollar amount (with dot and two decimal places)" 
-                                name="password"
-                                 placeholder="Nouveau mot de passe">
+                            <input type="password" class="form-control"
+                                aria-label="Dollar amount (with dot and two decimal places)" name="password"
+                                placeholder="Nouveau mot de passe">
                         </div>
                         <div class="input-group mt-2">
-                            <input type="password"
-                             class="form-control"
-                                aria-label="Dollar amount (with dot and two decimal places)" 
-                                name="secondPassword"
-                                 placeholder="Retape le on sait jamais ^^">
+                            <input type="password" class="form-control"
+                                aria-label="Dollar amount (with dot and two decimal places)" name="secondPassword"
+                                placeholder="Retape le on sait jamais ^^">
                         </div>
 
 
