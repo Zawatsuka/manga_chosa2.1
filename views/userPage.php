@@ -1,7 +1,6 @@
 <?php
 $typeRight= true;
 ob_start();
-var_dump($_SESSION['admin']);
 if($_SESSION['admin'] == 1){
 
 echo '<a class="ml-3" href="/controllers/listOfUserCTRL.php">
