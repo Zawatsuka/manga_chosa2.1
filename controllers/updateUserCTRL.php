@@ -17,10 +17,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $size = $_FILES['profilImg']['size'];
         $error = $_FILES['profilImg']['error'];
         move_uploaded_file($tmpName, dirname(__FILE__).'/../assets/upload/'.$name);
-        $im_php = imagecreatefromjpeg('../assets/upload/'.$name);
-        $size = min(imagesx($im_php), imagesy($im_php));
-        $im_php = imagecrop($im_php, ['x' => $size*0.4, 'y' => 0, 'width' => $size, 'height' => $size]);
-        $im_php = imagescale($im_php, 300);
+        $im = imagecreatefromjpeg('../assets/upload/'.$name);
+        $size = min(imagesx($im), imagesy($im));
+        $im2 = imagecrop($im, ['x' => 0, 'y' => 0, 'width' => $size, 'height' => $size]);
+        if ($im2 !== FALSE) {
+            imagejpeg($im2, '../assets/upload/'.$name);
+            imagedestroy($im2);
+        }
+        imagedestroy($im);
     }
 
 

@@ -15,7 +15,7 @@ ob_start();
                 <?php
                 $file='../assets/upload/profil-'.$viewUser->id.'.jpg';
                 if(file_exists($file)==true){?>
-                    <img src="/assets/upload/profil-<?=$viewUser->id?>.jpg" class=" mt-3 m-3 ml-4 img-fluid" width="400" alt="">
+                    <img src="/assets/upload/profil-<?=$viewUser->id?>.jpg" class=" mt-5 m-3 ml-4 img-fluid rounded-circle" width="400" alt="">
                     <?php }else{ ?>
                     <img src="/assets/img/user2.png" class="m-3 ml-4  img-fluid" width="200" alt="user">
                    <?php }?>
