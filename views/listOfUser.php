@@ -21,20 +21,20 @@ ob_start();
                       ?>
                 <tr>
                     <td>
-                        <a href="/controllers/userPageCTRL.php?idUser=<?=$value->id?>">
+                        <a href="/controllers/userPageCTRL.php?idUser=<?=$value->id?>" class="text-secondary">
                             <?php
                             $file='../assets/upload/profil-'.$value->id.'.jpg';
                             if(file_exists($file)==true){?>
-                                <img src="/assets/upload/profil-<?=$value->id?>.jpg" class=" mt-3 m-3 ml-4 img-fluid rounded-circle p-0" width="40" alt="">
+                                <img src="/assets/upload/profil-<?=$value->id?>.jpg" class=" ml-4 img-fluid rounded-circle p-0" width="30" alt="">
                                 <?php }else{ ?>
-                                <img src="/assets/img/user.png" class="m-3 ml-4  img-fluid" width="20" alt="user">
+                                <img src="/assets/img/user.png" class=" ml-4  img-fluid" width="20" alt="user">
                                <?php }?>
+                               <?= $value->pseudo ?>
                         </a> 
-                        <?= $value->pseudo ?>
                     </td>
-                    <td>sp<?= $value->mail ?></td>
-                    <td>sp<?= $value->gender ?></td>
-                    <td>sp<?= $value->birthDate ?></td>
+                    <td><?= $value->mail ?></td>
+                    <td><?= $value->gender ?></td>
+                    <td><?= $value->birthDate ?></td>
                     <td>
                         <?php if($value->admin ==1){
                         echo 'oui';

@@ -12,6 +12,7 @@
     if($user){
         $_SESSION['id'] = $user->id;
         $_SESSION['pseudo'] = $user->pseudo;
+        $_SESSION['admin']=$user->admin;
         header('location: /index.php');
     } else {
         $errorsArray['login_error'] = 'Votre login ou mot de passe n\'est pas reconnu';
