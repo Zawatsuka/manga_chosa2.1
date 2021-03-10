@@ -1,7 +1,7 @@
 <?php
     session_start();
-include('../utils/regex.php');
-include('../models/User.php');
+require_once('../utils/regex.php');
+require_once('../models/User.php');
 setlocale(LC_TIME, 'fr_FR.utf8', 'fra.utf8');
 
 
@@ -9,7 +9,7 @@ $idUser = intval(trim(filter_input(INPUT_GET, 'idUser', FILTER_SANITIZE_NUMBER_I
 $userObj = new User();
 $viewUser = $userObj->UserPage($idUser);
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && $idUser == $_SESSION['id']) {
     $errorsArray = array();
     if(isset($_FILES)){
         // upload de l'image 
@@ -139,8 +139,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // var_dump($usertab); 
         $testRegister = $usertab->updateUser($idUser);
         $isOk = '<div class=" slideInDown alert alert-success" role="alert">
-    C\'est modifié !
-    </div>';
+        C\'est modifié !</div>';
     } else {
         $error = '<p class="text-danger mt-2">Erreur au chargement</p>';
     }
