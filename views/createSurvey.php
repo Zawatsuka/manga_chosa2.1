@@ -1,10 +1,8 @@
 <?php
 $typeRight= true;
 ob_start();
-var_dump($_FILES);
-var_dump($_POST);
 ?>
-<form method="POST" action="/index.php" enctype="multipart/form-data">
+<form method="POST" action="#" enctype="multipart/form-data">
     <div class="container mt-5">
         <h3 class="mb-5 ml-2">Creation de sondage</h3>
         <div class="input-group mb-3">
@@ -16,7 +14,7 @@ var_dump($_POST);
                 <option value="1">Shonen</option>
                 <option value="2">Shojo</option>
                 <option value="3">Seinen</option>
-                <option value="3">Ecchi</option>
+                <option value="4">Ecchi</option>
             </select>
         </div>
         <div class="row">
