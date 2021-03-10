@@ -36,11 +36,14 @@ echo '<a class="ml-3" href="/controllers/listOfUserCTRL.php">
             }?>
                         </p>
                         <p class="card-text">
-                            <a class="text-secondary" href="/controllers/updateUserCTRL.php?idUser=<?=$viewUser->id;?>">
+                        <?php if($idUser == $_SESSION['id']){
+                            echo '<a class="text-secondary" href="/controllers/updateUserCTRL.php?idUser=.'.$viewUser->id.'.">
                                 Modifier
                                 <img src="/assets/img/update_1.png" class="img-fluid" width="20"
                                     alt="pictogramme modifier">
-                            </a>
+                            </a>';
+                            }
+                            ?>
                         </p>
                         <a class="btn btn-secondary mt-3" data-toggle="collapse" href="#collapseExample" role="button"
                             aria-expanded="false" aria-controls="collapseExample">

@@ -12,11 +12,14 @@ $viewUser = $userObj->UserPage($idUser);
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $errorsArray = array();
     if(isset($_FILES)){
+        // upload de l'image 
         $tmpName = $_FILES['profilImg']['tmp_name'];
         $name ='profil-'. $viewUser->id.'.jpg';
         $size = $_FILES['profilImg']['size'];
         $error = $_FILES['profilImg']['error'];
         move_uploaded_file($tmpName, dirname(__FILE__).'/../assets/upload/'.$name);
+
+        // crop de l'image
         $im = imagecreatefromjpeg('../assets/upload/'.$name);
         $size = min(imagesx($im), imagesy($im));
         $im2 = imagecrop($im, ['x' => 0, 'y' => 0, 'width' => $size, 'height' => $size]);
