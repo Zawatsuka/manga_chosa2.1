@@ -7,40 +7,20 @@ ob_start();
         <div class="col-12 p-0">
 
             <?php foreach($viewSurvey as $values){?>
-            <div class=" mt-3 align-items-center fadeInLeft">
+            <div class=" mt-3 align-items-center">
                 <div class="d-flex flex-row">
                     <div>
-                        <a data-toggle="collapse" href="#collapseExample" onclick="move()" role="button"
-                            aria-expanded="false" aria-controls="collapseExample">
+                        <a href="/index.php?vote2=<?=$_SESSION['id']?>">
                             <img src="/assets/upload/survey/1ER_Image_Pour_Sondage-<?= $values->id;?>.png"
                                 alt="'.$values->title1.'" class="ml-2 img-fluid index-img zoom" width="400">
                         </a>
-                        <div class="collapse" id="collapseExample">
-                            <div class="card card-body">
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-dark"
-                                        role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
-                                        style="width: 60%"> 60%</div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                     <img src="../../assets/img/versus.svg" alt="Versus" width="65" class="img-fluid p-3 align-center">
                     <div>
-                        <a data-toggle="collapse" href="#collapseExample" onclick="move()" role="button"
-                            aria-expanded="false" aria-controls="collapseExample">
+                        <a href="/index.php?vote1=<?= $_SESSION['id'];?>" class="zoom">
                             <img src="/assets/upload/survey/2EME_Image_Pour_Sondage-<?= $values->id;?>.png"
                                 alt="'.$values->title2.'" class="ml-2md- img-fluid index-img zoom" width="400">
                         </a>
-                        <div class="collapse" id="collapseExample">
-                            <div class="card card-body">
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-dark"
-                                        role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
-                                        style="width: 40%"> 40%</div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

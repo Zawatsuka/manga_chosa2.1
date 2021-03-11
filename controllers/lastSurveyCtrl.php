@@ -10,7 +10,9 @@
         $idType=1;
     }
     $survey= new Survey();
-    $surveyDeactivated = $survey->DesactiveSurvey($idDeactivated); 
+    if(isset($_SESSION['id']) && $_SESSION['admin']==1){
+        $surveyDeactivated = $survey->DesactiveSurvey($idDeactivated); 
+    }
     $viewSurveyDesactive = $survey->viewsAllSurveyDesactive($idType);
 
     include(dirname(__FILE__).'/../template/header.php');
