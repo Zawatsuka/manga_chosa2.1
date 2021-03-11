@@ -4,7 +4,6 @@
     $list_type = new typeOfManga();
     $getListType = $list_type->listOfType();
     $idType = intval(trim(filter_input(INPUT_GET, 'idType', FILTER_SANITIZE_NUMBER_INT)));
-    var_dump($idType);
     if($idType==0){
         $idType=1;
     }

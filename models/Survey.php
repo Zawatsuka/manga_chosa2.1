@@ -10,7 +10,7 @@
     private $_desactive;
     private $_pdo;
 
-    public function __construct($title1=NULL, $title2=NULL, $typeOfManga=NULL ,$vote1=0 , $vote2=0,$desactive=0, $active=1)
+    public function __construct($title1=NULL, $title2=NULL, $typeOfManga=NULL ,$vote1=0 , $vote2=0,$desactive=0, $active=TRUE)
     {
         $this->_title1= $title1;
         $this->_title2= $title2;
@@ -38,7 +38,7 @@
     }
 
     public function viewsAllSurvey($idType){
-        $sql = "SELECT * FROM `survey` WHERE `id_typeOfmanga`=:idTypeOfManga ;";
+        $sql = "SELECT * FROM `survey` WHERE `id_typeOfmanga`=:idTypeOfManga AND `active`= 1;";
         $sth = $this->_pdo->prepare($sql);
         $sth->bindValue(':idTypeOfManga',$idType, PDO::PARAM_STR);
         $sth->execute();
@@ -46,5 +46,18 @@
         return $survay; 
     
     }
+
+    public function DesactiveSurvey($idDesactive){
+            try{
+                $sql = "UPDATE `survey` SET `active`= 0,
+                `desactive`= 1 WHERE `id` = :id;";
+                $stmt = $this->_pdo->prepare($sql);
+                $stmt -> bindValue(':id',$idDesactive, PDO::PARAM_INT);
+                return $stmt->execute();
+            }catch(PDOException $e){
+                return $e->getMessage();
+            }
+    }
+    
 
    }
