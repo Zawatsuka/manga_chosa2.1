@@ -1,5 +1,11 @@
 <?php
 ob_start();
+if(isset($isOk)){
+    echo $isOk;
+}
+if(isset($error)){
+    echo $error;
+}
 ?>
 <div class="container-fluid">
     <!-- sondage -->

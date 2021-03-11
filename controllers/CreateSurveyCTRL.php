@@ -26,14 +26,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $errorsArray['titre_error'] = 'Le titre n\'est pas valide';
         }
     }
-
+    var_dump($errorsArray);
     // verification du select typeOfMAnga 
     $typeOfManga = trim(filter_input(INPUT_POST, 'typeOfManga', FILTER_SANITIZE_NUMBER_INT));
     if (empty($errorsArray)) { 
-        
+        var_dump($errorsArray);
         $pdo = Database::connectToBdd();
         $pdo->beginTransaction();
-        $surveyObj = new Survey($title1,$title2,$typeOfManga);
+        $surveyObj = new Survey($title1,$title2,$typeOfManga,1);
         $SurveyAdd = $surveyObj->addSurvey();
         $idSurvey= $pdo->lastInsertId();
 
@@ -44,12 +44,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // upload de la premiere image 
             $tmpName = $_FILES['Survey1']['tmp_name'];
             $name ='1ER_Image_Pour_Sondage-'.$idSurvey.'.png';
-            $error = $_FILES['Survey1']['error'];
+            $errorFile = $_FILES['Survey1']['error'];
             move_uploaded_file($tmpName, dirname(__FILE__).'/../assets/upload/survey/'.$name);
             // upload de la deuxieme image 
             $tmpName = $_FILES['Survey2']['tmp_name'];
             $name ='2EME_Image_Pour_Sondage-'.$idSurvey.'.png';
-            $error = $_FILES['Survey2']['error'];
+            $errorFile = $_FILES['Survey2']['error'];
             move_uploaded_file($tmpName, dirname(__FILE__).'/../assets/upload/survey/'.$name);
         }
         
@@ -63,10 +63,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $error = '<p class="text-danger mt-2">Erreur au chargement</p>';
     }
 }
-
-
-
-
 
 
     session_start();

@@ -2,7 +2,7 @@
 $typeRight= true;
 ob_start();
 ?>
-<form method="POST" action="/index.php" enctype="multipart/form-data">
+<form method="POST" enctype="multipart/form-data">
     <div class="container mt-5">
         <h3 class="mb-5 ml-2">Creation de sondage</h3>
         <div class="input-group mb-3">

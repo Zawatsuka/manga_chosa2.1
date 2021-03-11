@@ -10,7 +10,7 @@
     private $_desactive;
     private $_pdo;
 
-    public function __construct($title1=NULL, $title2=NULL, $typeOfManga=NULL ,$vote1=0 , $vote2=0,$desactive=0, $active=TRUE)
+    public function __construct($title1=NULL, $title2=NULL, $typeOfManga=NULL ,$vote1=0 , $vote2=0,$desactive=0, $active=1)
     {
         $this->_title1= $title1;
         $this->_title2= $title2;
@@ -24,12 +24,13 @@
 
     public function addSurvey(){
         try{
-        $sql ="INSERT INTO `survey` (`title1`,`title2`,`id_typeofmanga`)VALUES 
-        (:title1,:title2,:typeofManga);";
+        $sql ="INSERT INTO `survey` (`title1`,`title2`,`id_typeofmanga`,`active`)VALUES 
+        (:title1,:title2,:typeofManga,:active);";
         $stmt = $this->_pdo->prepare($sql);
         $stmt->bindValue(':title1',$this->_title1 , PDO::PARAM_STR);
         $stmt->bindValue(':title2',$this->_title2 , PDO::PARAM_STR);
         $stmt->bindValue(':typeofManga',$this->_typeofmanga , PDO::PARAM_INT);
+        $stmt->bindValue(':active',$this->_active , PDO::PARAM_BOOL);
         return $stmt->execute();
         }catch(PDOException $e){
          return  $e->getMessage();
