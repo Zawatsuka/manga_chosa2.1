@@ -37,4 +37,13 @@
         
     }
 
+    public function viewsAllSurvey(){
+        $sql = "SELECT * FROM `survey`";
+        $sth = $this->_pdo->prepare($sql);
+        $sth->execute();
+        $survay = $sth->fetchAll();
+        return $survay; 
+    
+    }
+
    }

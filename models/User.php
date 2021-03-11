@@ -45,8 +45,8 @@ class User{
         $sql = "SELECT * FROM `user`";
         $sth = $this->_pdo->prepare($sql);
         $sth->execute();
-        $patients = $sth->fetchAll();
-        return $patients; 
+        $user = $sth->fetchAll();
+        return $user; 
     }
 
     public function DeletedUser($idUser){
