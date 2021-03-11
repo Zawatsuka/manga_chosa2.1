@@ -61,7 +61,7 @@
     }
 
     public function viewsAllSurveyDesactive($idType){
-        $sql = "SELECT * FROM `survey` WHERE `id_typeOfmanga`=:idTypeOfManga AND `active`= 0;";
+        $sql = "SELECT * FROM `survey` WHERE `id_typeOfmanga`=:idTypeOfManga AND `active`= 0 AND `desactive`= 1;";
         $sth = $this->_pdo->prepare($sql);
         $sth->bindValue(':idTypeOfManga',$idType, PDO::PARAM_STR);
         $sth->execute();

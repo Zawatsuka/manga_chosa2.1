@@ -2,7 +2,7 @@
     <!-- liste des differents genres -->
     <ul>
     <?php foreach($getListTypeDesactive as $value){?>
-        <a href="/controllers/lastSurveyCtrl.php?$idType=<?=$value->id; ?>">
+        <a href="/controllers/lastSurveyCtrl.php?idType=<?=$value->id; ?>">
             <li class="pt-5 center-text zoom"><?=$value->typeofmanga; ?></li>
         </a>
     <?php
