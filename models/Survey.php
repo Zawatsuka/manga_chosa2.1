@@ -58,6 +58,16 @@
                 return $e->getMessage();
             }
     }
+
+    public function viewsAllSurveyDesactive($idType){
+        $sql = "SELECT * FROM `survey` WHERE `id_typeOfmanga`=:idTypeOfManga AND `active`= 0;";
+        $sth = $this->_pdo->prepare($sql);
+        $sth->bindValue(':idTypeOfManga',$idType, PDO::PARAM_STR);
+        $sth->execute();
+        $survay = $sth->fetchAll();
+        return $survay; 
+    
+    }
     
 
    }
