@@ -37,9 +37,10 @@
         
     }
 
-    public function viewsAllSurvey(){
-        $sql = "SELECT * FROM `survey`";
+    public function viewsAllSurvey($idType){
+        $sql = "SELECT * FROM `survey` WHERE `id_typeOfmanga`=:idTypeOfManga ;";
         $sth = $this->_pdo->prepare($sql);
+        $sth->bindValue(':idTypeOfManga',$idType, PDO::PARAM_STR);
         $sth->execute();
         $survay = $sth->fetchAll();
         return $survay; 
