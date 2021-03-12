@@ -2,6 +2,10 @@
 <?php 
 require_once('../utils/regex.php');
 require_once('../models/Survey.php');
+require_once('../models/TypeOfManga.php');
+
+$list_type = new typeOfManga();
+$getListType = $list_type->listOfType();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $errorsArray = array();

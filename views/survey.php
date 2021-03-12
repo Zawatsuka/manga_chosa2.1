@@ -16,14 +16,14 @@ if(isset($error)){
             <div class=" mt-3 align-items-center">
                 <div class="d-flex flex-row">
                     <div>
-                        <a href="/index.php?vote2=<?=$_SESSION['id'] ?? '' ?>">
+                        <a href="/index.php?idSurveyV1=<?= $values->id ?>">
                             <img src="/assets/upload/survey/1ER_Image_Pour_Sondage-<?= $values->id;?>.png"
                                 alt="'.$values->title1.'" class="ml-2 img-fluid index-img zoom" width="400">
                         </a>
                     </div>
                     <img src="../../assets/img/versus.svg" alt="Versus" width="65" class="img-fluid p-3 align-center">
                     <div>
-                        <a href="/index.php?vote1=<?= $_SESSION['id'] ?? '';?>" class="zoom">
+                        <a href="/index.php?idSurveyV2=<?= $values->id ?>" class="zoom">
                             <img src="/assets/upload/survey/2EME_Image_Pour_Sondage-<?= $values->id;?>.png"
                                 alt="'.$values->title2.'" class="ml-2md- img-fluid index-img zoom" width="400">
                         </a>

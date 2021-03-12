@@ -11,10 +11,9 @@ ob_start();
             </div>
             <select class="custom-select" id="inputGroupSelect01" name="typeOfManga">
                 <option selected>Chosissez votre genre</option>
-                <option value="1">Shonen</option>
-                <option value="2">Shojo</option>
-                <option value="3">Seinen</option>
-                <option value="4">Ecchi</option>
+                <?php foreach($getListType as $value){?>
+                <option value="<?= $value->id ?>"><?= $value->typeofmanga?></option>
+                <?php } ?>
             </select>
         </div>
         <div class="row">
