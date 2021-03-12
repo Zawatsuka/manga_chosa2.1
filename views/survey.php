@@ -12,18 +12,26 @@ if(isset($error)){
     <div class="row ">
         <div class="col-12 p-0">
 
-            <?php foreach($viewSurvey as $values){?>
+            <?php
+            var_dump($OnlyOneVote2);
+            var_dump($OnlyOneVote1);
+            if(isset($_SESSION['id'])&& (isset($OnlyOneVote2) || isset($OnlyOneVote1)) && (isset($OnlyOneVote2->id_user) || isset($OnlyOneVote1->id_user))){  
+                
+                if($_SESSION['id'] == $OnlyOneVote2->id_user || $_SESSION['id'] == $OnlyOneVote1->id_user){
+                    echo 'coucou';
+                }else{
+            foreach($viewSurvey as $values){ ?>
             <div class=" mt-3 align-items-center">
                 <div class="d-flex flex-row">
                     <div>
-                        <a href="/index.php?idSurveyV1=<?= $values->id ?>">
+                        <a href="/index.php?idSurveyV1=<?= $values->id ?>&idType=<?=$values->id_typeofmanga?>">
                             <img src="/assets/upload/survey/1ER_Image_Pour_Sondage-<?= $values->id;?>.png"
                                 alt="'.$values->title1.'" class="ml-2 img-fluid index-img zoom" width="400">
                         </a>
                     </div>
                     <img src="../../assets/img/versus.svg" alt="Versus" width="65" class="img-fluid p-3 align-center">
                     <div>
-                        <a href="/index.php?idSurveyV2=<?= $values->id ?>" class="zoom">
+                        <a href="/index.php?idSurveyV2=<?= $values->id ?>&idType=<?=$values->id_typeofmanga?>" class="zoom">
                             <img src="/assets/upload/survey/2EME_Image_Pour_Sondage-<?= $values->id;?>.png"
                                 alt="'.$values->title2.'" class="ml-2md- img-fluid index-img zoom" width="400">
                         </a>
@@ -33,7 +41,10 @@ if(isset($error)){
             <?php if(isset($_SESSION['admin']) && $_SESSION['admin']==1){?>
             <a href="/controllers/lastSurveyCtrl.php?idDeactivated=<?= $values->id;?>" class=" fadeInLeft btn btn-outline-secondary ml-3 mt-3 mb-3">Archiver</a> 
             <?php }
-         } ?>
+            }
+        }
+    }
+             ?>
         </div>
     </div>
     <!-- partie commentaires -->

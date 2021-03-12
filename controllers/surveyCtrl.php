@@ -1,6 +1,7 @@
 <?php 
     require_once(dirname(__FILE__).'/../models/Survey.php');
     require_once(dirname(__FILE__).'/../models/TypeOfManga.php');
+    require_once(dirname(__FILE__).'/../models/Vote.php');
     // recuperation de liste des types de manga 
     $list_type = new typeOfManga();
     $getListType = $list_type->listOfType();
@@ -20,5 +21,17 @@
     $clicFirstVote1 = $forVote->vote1($surveyVote1);
     $clicFirstVote2 = $forVote->vote2($surveyVote2);
     // $clicSecondVote = $forVote->vote2();
+    
+    if(isset($_SESSION['id'])){
+    $vote = new Vote();
+    $voteAdd1 = $vote->addVote($_SESSION['id'],$surveyVote1);
+    $voteAdd2 = $vote->addVote($_SESSION['id'],$surveyVote2);
+
+    $OnlyOneVote1= $vote->voteUserList($surveyVote1,$_SESSION['id']);
+    $OnlyOneVote2= $vote->voteUserList($surveyVote2,$_SESSION['id']);
+    }
+    // var_dump($OnlyOneVote1);
+    // var_dump($OnlyOneVote2);
+
 
     include(dirname(__FILE__).'/../views/survey.php');
