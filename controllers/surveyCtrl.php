@@ -13,13 +13,7 @@
     }
     $listOfSurvey = new Survey();   
     $viewSurvey = $listOfSurvey->viewsAllSurvey($idTypeOfManga);
-    $i=0;
-    $vote = new Vote();
-    foreach($viewSurvey as $value){
-        $value->HasVoted=$vote->idAccordingToASurvey($value->id,$_SESSION['id']);
-        $viewSurvey[$i]=$value;
-        $i++;
-    }
+    
     // creation du vote selon un id 
     // recuperation en get de l'id du sondage
     $surveyVote1 = intval(trim(filter_input(INPUT_GET, 'idSurveyV1', FILTER_SANITIZE_NUMBER_INT)));
@@ -33,7 +27,14 @@
     $vote2 = new Vote(false , true);
 
     $addVote2 = $vote2->addVote2($_SESSION['id'],$surveyVote2 );
-   
+    
+    $i=0;
+    $vote = new Vote();
+    foreach($viewSurvey as $value){
+        $value->HasVoted=$vote->idAccordingToASurvey($value->id,$_SESSION['id']);
+        $viewSurvey[$i]=$value;
+        $i++;
+    }
    
    
    
