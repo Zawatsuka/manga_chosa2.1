@@ -13,14 +13,11 @@ if(isset($error)){
         <div class="col-12 p-0">
 
             <?php
-            var_dump($OnlyOneVote2);
-            var_dump($OnlyOneVote1);
-            if(isset($_SESSION['id'])&& (isset($OnlyOneVote2) || isset($OnlyOneVote1)) && (isset($OnlyOneVote2->id_user) || isset($OnlyOneVote1->id_user))){  
-                
-                if($_SESSION['id'] == $OnlyOneVote2->id_user || $_SESSION['id'] == $OnlyOneVote1->id_user){
-                    echo 'coucou';
-                }else{
-            foreach($viewSurvey as $values){ ?>
+            foreach($viewSurvey as $values){
+                if($values->HasVoted==true){
+                    echo 'coucou'; ?>
+
+             <?php   }else{ ?>
             <div class=" mt-3 align-items-center">
                 <div class="d-flex flex-row">
                     <div>
@@ -42,8 +39,8 @@ if(isset($error)){
             <a href="/controllers/lastSurveyCtrl.php?idDeactivated=<?= $values->id;?>" class=" fadeInLeft btn btn-outline-secondary ml-3 mt-3 mb-3">Archiver</a> 
             <?php }
             }
-        }
-    }
+         }
+    
              ?>
         </div>
     </div>

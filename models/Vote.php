@@ -2,39 +2,71 @@
 require_once(dirname(__FILE__).'/../utils/database.php');
 class Vote{
 
-    private $_id;
-    private $_id_user;
-    private $_id_survey;
-    private $_created_at;
+    private $_vote1;
+    private $_vote2;
     private $_pdo;
 
 
-    public function __construct()
+    public function __construct($vote1=false,$vote2=false)
     {
+        $this->_vote1= $vote1;
+        $this->_vote2= $vote2;
         $this-> _pdo = Database::connectToBdd();
     }
 
-    public function addVote($idUser,$idSurvey){
+    public function addVote1($idUser,$idSurvey){
         try{
-        $sql ="INSERT INTO `vote` (`id_user`,`id_survey`)VALUES 
-        (:idUser,:idSurvey);";
+        $sql ="INSERT INTO `vote` (`id_user`,`id_survey`,`vote1`)VALUES 
+        (:idUser,:idSurvey , :vote1);";
         $stmt = $this->_pdo->prepare($sql);
         $stmt->bindValue(':idUser',$idUser , PDO::PARAM_INT);
         $stmt->bindValue(':idSurvey',$idSurvey , PDO::PARAM_INT);
+        $stmt->bindValue(':vote1', $this->_vote1 , PDO::PARAM_BOOL);
         return $stmt->execute();
         }catch(PDOException $e){
          return  $e->getMessage();
         }
         
     }
-    public function voteUserList($idSurvey,$idUser){
-        $sql ="SELECT * FROM `vote` WHERE `id_survey`=:idSurvey AND `id_user`=:idUser;";
+    public function addVote2($idUser,$idSurvey){
+        try{
+        $sql ="INSERT INTO `vote` (`id_user`,`id_survey`,`vote2`)VALUES 
+        (:idUser,:idSurvey , :vote2);";
+        $stmt = $this->_pdo->prepare($sql);
+        $stmt->bindValue(':idUser',$idUser , PDO::PARAM_INT);
+        $stmt->bindValue(':idSurvey',$idSurvey , PDO::PARAM_INT);
+        $stmt->bindValue(':vote2', $this->_vote2 , PDO::PARAM_BOOL);
+        return $stmt->execute();
+        }catch(PDOException $e){
+         return  $e->getMessage();
+        }
+        
+    }
+
+    public function SelectVoteUser($idUser){
+        $sql= "SELECT * FROM `vote` WHERE `id_user`= :idUser";
+        $stmt = $this->_pdo->prepare($sql);
+        $stmt->bindValue(':idUser',$idUser , PDO::PARAM_INT);
+        $stmt->execute();
+        $survay = $stmt->fetchAll();
+        return $survay; 
+    }
+
+
+    public function idAccordingToASurvey($idSurvey,$idUser){
+        $sql ="SELECT * FROM `vote` WHERE `id_user` = :idUser AND `id_survey`=:idSurvey;";
         $stmt = $this->_pdo->prepare($sql);
         $stmt->bindValue(':idSurvey',$idSurvey , PDO::PARAM_INT);
         $stmt->bindValue(':idUser',$idUser , PDO::PARAM_INT);
-        $stmt->execute();
-        $survay = $stmt->fetch();
-        return $survay; 
+        if($stmt->execute()){
+            if($stmt->fetch()){
+                return true;
+            }else{
+                return false;
+            }
+        }else{
+            return false;
+        }
     }
 
 }
