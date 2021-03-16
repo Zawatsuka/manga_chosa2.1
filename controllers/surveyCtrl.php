@@ -26,17 +26,18 @@
         $addVote1 = $vote1->addVote1($_SESSION['id'] ,$surveyVote1 );
         $addVote2 = $vote2->addVote2($_SESSION['id'],$surveyVote2 );
         
-        if($addVote1 && $addVote2){
             $i=0;
             $vote = new Vote();
+            
+                
             foreach($viewSurvey as $value){
                 $value->HasVoted=$vote->idAccordingToASurvey($value->id,$_SESSION['id']);
                 $value->NumberV1 =$vote->countVoteWhereId1($value->id)->votes1;
                 $value->NumberV2 =$vote->countVoteWhereId2($value->id)->votes2;
                 $viewSurvey[$i]=$value;
-                $i++;
-           }
-        }
+                $i++;  
+                
+                }
         // var_dump($viewSurvey);
 
     }

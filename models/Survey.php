@@ -70,38 +70,34 @@
     
     }
 
-    public function vote1($idSurvey){
-        try{
-            // $sql2="SELECT `vote1` FROM `survey` WHERE `id`=:idSurvey;";
-            // $stmt = $this->_pdo->prepare($sql2);
-            // $stmt -> bindValue(':idSurvey',$idSurvey, PDO::PARAM_INT);
-            // $stmt->execute();
-            // $NumberVote =$stmt->fetch();
-            // var_dump($NumberVote);
-            // $totalVote = $NumberVote->vote1+1;
-            // var_dump($totalVote);
-            $sql = "UPDATE `survey` SET `vote1`= `vote1`+ 1
-            WHERE `id` = :id;";
-            $stmt = $this->_pdo->prepare($sql);
-            // $stmt -> bindValue(':totalVote', $totalVote, PDO::PARAM_STR);
-            $stmt -> bindValue(':id',$idSurvey, PDO::PARAM_INT);
-            return $stmt->execute();
-        }catch(PDOException $e){
-            return $e->getMessage();
-        }
-    }
-
-    public function vote2($idSurvey){
-        try{
-            $sql = "UPDATE `survey` SET `vote2`= `vote2`+1
-            WHERE `id` = :id;";
-            $stmt = $this->_pdo->prepare($sql);
-            $stmt -> bindValue(':id',$idSurvey, PDO::PARAM_INT);
-            return $stmt->execute();
-        }catch(PDOException $e){
-            return $e->getMessage();
-        }
+    public function viewSurvey($idSurvey){
+        $sql = "SELECT * FROM `survey` WHERE `id`= :idSurvey";
+        $sth = $this->_pdo->prepare($sql);
+        $sth->bindValue(':idSurvey',$idSurvey, PDO::PARAM_INT);
+        $sth->execute();
+        $survay = $sth->fetch();
+        return $survay; 
+    
     }
     
+    public function updateSurvey($idSurvey){
+        try{
+        $sql ="UPDATE `survey` SET `title1`=:title1,
+                                    `title2`=:title2,
+                                    `id_typeofmanga`=:typeofManga,
+                                    `active` = :active)
+                                WHERE id=:idSurvey ;";
+        $stmt = $this->_pdo->prepare($sql);
+        $stmt->bindValue(':title1',$this->_title1 , PDO::PARAM_STR);
+        $stmt->bindValue(':title2',$this->_title2 , PDO::PARAM_STR);
+        $stmt->bindValue(':typeofManga',$this->_typeofmanga , PDO::PARAM_INT);
+        $stmt->bindValue(':active',$this->_active , PDO::PARAM_BOOL);
+        $stmt->bindValue(':idSurvey',$idSurvey, PDO::PARAM_INT);
+        return $stmt->execute();
+        }catch(PDOException $e){
+         return  $e->getMessage();
+        }
+        
+    }
 
    }

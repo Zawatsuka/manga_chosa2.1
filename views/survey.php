@@ -21,13 +21,13 @@ if(isset($error)){
                     <div>
                             <img src="/assets/upload/survey/1ER_Image_Pour_Sondage-<?= $values->id;?>.png"
                                 alt="'.$values->title1.'" class="ml-2 img-fluid index-img" width="400">
-                            <p class="mt-3">Resultats : <?= $values->NumberV1 ?> votes</p>
+                            <p class="mt-3 ml-3">Resultats : <?= $values->NumberV1 ?> votes</p>
                     </div>
                     <img src="../../assets/img/versus.svg" alt="Versus" width="65" class="img-fluid p-3 align-center">
                     <div>
                             <img src="/assets/upload/survey/2EME_Image_Pour_Sondage-<?= $values->id;?>.png"
                                 alt="'.$values->title2.'" class="ml-2 img-fluid index-img" width="400">
-                            <p class="mt-3">Resultats : <?= $values->NumberV2 ?> votes</p>
+                            <p class="mt-3 ml-3">Resultats : <?= $values->NumberV1 ?> votes</p>
                     </div>
                 </div>
             </div>
@@ -50,9 +50,7 @@ if(isset($error)){
                     </div>
                 </div>
             </div>
-            <?php if(isset($_SESSION['admin']) && $_SESSION['admin']==1){?>
-            <a href="/controllers/lastSurveyCtrl.php?idDeactivated=<?= $values->id;?>" class=" fadeInLeft btn btn-outline-secondary ml-3 mt-3 mb-3">Archiver</a> 
-            <?php }
+          <?php
             }
          }
         }else{?>
@@ -66,6 +64,10 @@ if(isset($error)){
            </div> 
 
        <?php }
+          if(isset($_SESSION['admin']) && $_SESSION['admin']==1){?>
+            <a href="/controllers/lastSurveyCtrl.php?idDeactivated=<?= $values->id;?>" class=" fadeInLeft btn btn-outline-secondary ml-3 mt-3 mb-3">Archiver</a> 
+            <a href="/controllers/updateSurveyCtrl.php?idUpdate=<?= $values->id;?>" class=" fadeInLeft btn btn-outline-secondary ml-3 mt-3 mb-3">Modifier</a> 
+            <?php }
              ?>
         </div>
     </div>

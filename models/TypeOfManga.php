@@ -16,4 +16,12 @@
             $listOfType = $sth->fetchAll();
             return $listOfType; 
     }
+    public function OneType($idType){
+        $sql = "SELECT * FROM `typeofmanga` WHERE `id` = :idType";
+        $sth = $this->_pdo->prepare($sql);
+        $sth->bindValue(':idType',$idType, PDO::PARAM_INT);
+        $sth->execute();
+        $listOfType = $sth->fetch();
+        return $listOfType; 
+    }
 }
