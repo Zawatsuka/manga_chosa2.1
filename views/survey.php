@@ -21,13 +21,13 @@ if(isset($error)){
                     <div>
                             <img src="/assets/upload/survey/1ER_Image_Pour_Sondage-<?= $values->id;?>.png"
                                 alt="'.$values->title1.'" class="ml-2 img-fluid index-img" width="400">
-                            <p>Resultats : votes</p>
+                            <p class="mt-3">Resultats : <?= $values->NumberV1 ?> votes</p>
                     </div>
                     <img src="../../assets/img/versus.svg" alt="Versus" width="65" class="img-fluid p-3 align-center">
                     <div>
                             <img src="/assets/upload/survey/2EME_Image_Pour_Sondage-<?= $values->id;?>.png"
-                                alt="'.$values->title2.'" class="ml-2md- img-fluid index-img" width="400">
-                            <p>Resultats :  votes</p>
+                                alt="'.$values->title2.'" class="ml-2 img-fluid index-img" width="400">
+                            <p class="mt-3">Resultats : <?= $values->NumberV2 ?> votes</p>
                     </div>
                 </div>
             </div>
