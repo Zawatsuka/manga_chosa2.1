@@ -48,8 +48,8 @@ class Vote{
         $stmt = $this->_pdo->prepare($sql);
         $stmt->bindValue(':idUser',$idUser , PDO::PARAM_INT);
         $stmt->execute();
-        $survay = $stmt->fetchAll();
-        return $survay; 
+        $survey = $stmt->fetchAll();
+        return $survey; 
     }
 
 
@@ -69,4 +69,22 @@ class Vote{
         }
     }
 
+    public function countVoteWhereId1($idSurvey){
+        $sql= "SELECT COUNT(*) AS `votes1` FROM `vote` WHERE `id_survey`= :idSurvey AND `vote1` ;";
+        $stmt = $this->_pdo->prepare($sql);
+        $stmt->bindValue(':idSurvey',$idSurvey , PDO::PARAM_INT);
+        $stmt->execute();
+        $survey = $stmt->fetch();  
+        return $survey;  
+    }
+
+
+    public function countVoteWhereId2($idSurvey){
+        $sql= "SELECT COUNT(*) AS `votes2` FROM `vote` WHERE `id_survey`= :idSurvey AND `vote2` ;";
+        $stmt = $this->_pdo->prepare($sql);
+        $stmt->bindValue(':idSurvey',$idSurvey , PDO::PARAM_INT);
+        $stmt->execute();
+        $survey = $stmt->fetch();  
+        return $survey;  
+    }
 }

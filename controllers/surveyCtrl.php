@@ -28,14 +28,40 @@
         $vote2 = new Vote(false , true);
 
         $addVote2 = $vote2->addVote2($_SESSION['id'],$surveyVote2 );
-    
+        
+        $j=0;
+        $y=0;
         $i=0;
+        // $pourcentVote1
+        // $pourcentVote2
         $vote = new Vote();
         foreach($viewSurvey as $value){
             $value->HasVoted=$vote->idAccordingToASurvey($value->id,$_SESSION['id']);
             $viewSurvey[$i]=$value;
             $i++;
-    }
+
+            $value=$NumberV1= $vote->countVoteWhereId1($value->id_survey);
+            $viewSurvey[$j]=$value;
+            $j++;
+            // var_dump($vote1);
+
+            $value=$NumberV2 =$vote->countVoteWhereId2($value->id_survey);
+            $viewSurvey[$y]=$value;
+            $y++;
+            // var_dump($vote2);
+
+            // $value->vote1=$vote->countVoteWhereId1($value->id);
+            // $viewSurvey[$nbvote1]=$value;
+            // $nbvote1++;
+
+            // $value->$vote2=$vote->countVoteWhereId2($value->id);
+            // $viewSurvey[$nbvote2]=$value;
+            // $nbvote2++;
+           
+        }
+        var_dump($viewSurvey);
+
+        
    
     }
     
