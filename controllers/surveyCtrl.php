@@ -19,23 +19,26 @@
     $surveyVote1 = intval(trim(filter_input(INPUT_GET, 'idSurveyV1', FILTER_SANITIZE_NUMBER_INT)));
     $surveyVote2 = intval(trim(filter_input(INPUT_GET, 'idSurveyV2', FILTER_SANITIZE_NUMBER_INT)));
    
-    $vote1 = new Vote(true , false);
+    if(isset($_SESSION['id'])){
+        $vote1 = new Vote(true , false);
 
-    $addVote1 = $vote1->addVote1($_SESSION['id'] ,$surveyVote1 );
+        $addVote1 = $vote1->addVote1($_SESSION['id'] ,$surveyVote1 );
 
     
-    $vote2 = new Vote(false , true);
+        $vote2 = new Vote(false , true);
 
-    $addVote2 = $vote2->addVote2($_SESSION['id'],$surveyVote2 );
+        $addVote2 = $vote2->addVote2($_SESSION['id'],$surveyVote2 );
     
-    $i=0;
-    $vote = new Vote();
-    foreach($viewSurvey as $value){
-        $value->HasVoted=$vote->idAccordingToASurvey($value->id,$_SESSION['id']);
-        $viewSurvey[$i]=$value;
-        $i++;
+        $i=0;
+        $vote = new Vote();
+        foreach($viewSurvey as $value){
+            $value->HasVoted=$vote->idAccordingToASurvey($value->id,$_SESSION['id']);
+            $viewSurvey[$i]=$value;
+            $i++;
     }
    
+    }
+    
    
    
    

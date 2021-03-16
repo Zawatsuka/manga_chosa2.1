@@ -13,9 +13,11 @@ if(isset($error)){
         <div class="col-12 p-0">
 
             <?php
-            foreach($viewSurvey as $values){
+            if(isset($_SESSION['id'])){
+                foreach($viewSurvey as $values){
                 if($values->HasVoted==true){
-                    echo 'coucou'; ?>
+                    echo 'coucou'; ?> 
+           
 
              <?php   }else{ ?>
             <div class=" mt-3 align-items-center">
@@ -40,7 +42,17 @@ if(isset($error)){
             <?php }
             }
          }
-    
+        }else{?>
+
+           <div class="container">
+           <div class="row m-3">
+           <h2>Vous devez etre connecter pour avoir accés aux sondages</h2>
+           <img src="/assets/img/david.gif" class="img-fluid mt-3" width="700" alt="c'est pas si mal"> 
+           </div>
+                     
+           </div> 
+
+       <?php }
              ?>
         </div>
     </div>
