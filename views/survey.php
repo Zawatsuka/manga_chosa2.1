@@ -62,6 +62,7 @@ if(isset($error)){
             </a>  
             <?php }
             }
+            include(dirname(__FILE__).'/../controllers/commentviewsCTRL.php');
          }
          if(empty($viewSurvey)){ ?>
             <div class="container">
@@ -89,9 +90,7 @@ if(isset($error)){
     </div>
     <!-- partie commentaires -->
     <!-- partie envoi de message en pc  -->
-    <?php
-            include(dirname(__FILE__).'/../controllers/commentviewsCTRL.php');
-            ?>
+    
 
 </div>
 <?php

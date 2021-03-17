@@ -2,6 +2,7 @@
     session_start();
     require_once(dirname(__FILE__).'/../models/TypeOfManga.php');
     require_once(dirname(__FILE__).'/../models/Survey.php');
+    setlocale(LC_TIME, 'fr_FR.utf8', 'fra.utf8');
     $list_type = new typeOfManga();
     $getListTypeDesactive = $list_type->listOfType();
     $idDeactivated = intval(trim(filter_input(INPUT_GET, 'idDeactivated', FILTER_SANITIZE_NUMBER_INT)));

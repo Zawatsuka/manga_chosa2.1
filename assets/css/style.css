@@ -95,8 +95,8 @@ a:hover {
 }
 
 .bg-comment {
-    background-color: rgb(160, 160, 160);
-    height: 300px;
+    background-color: rgb(199, 199, 199);
+    height: 400px;
     overflow: auto;
 }
 
@@ -111,7 +111,6 @@ a:hover {
 }
 
 .comment {
-    margin-left: 11%;
     font-size: 22px;
 }
 
