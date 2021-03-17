@@ -1,6 +1,9 @@
 <?php
 $typeRight= true;
 ob_start();
+if(isset($isOk)){
+    echo $isOk;
+}
 ?>
 <form method="POST" enctype="multipart/form-data">
     <div class="container mt-5">

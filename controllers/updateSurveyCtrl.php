@@ -6,12 +6,12 @@ require_once('../models/TypeOfManga.php');
 $idUpdate = intval(trim(filter_input(INPUT_GET, 'idUpdate', FILTER_SANITIZE_NUMBER_INT)));
 $viewSurveyObj = new Survey();
 $viewSurvey = $viewSurveyObj->viewSurvey($idUpdate);
-var_dump($viewSurvey);
+// var_dump($viewSurvey);
 
 $list_type = new typeOfManga();
 $getListType = $list_type->listOfType();
 $getOneType = $list_type->OneType($viewSurvey->id_typeofmanga);
-var_dump($getOneType);
+// var_dump($getOneType);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $errorsArray = array();
@@ -36,10 +36,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $errorsArray['titre_error'] = 'Le titre n\'est pas valide';
         }
     }
-    var_dump($errorsArray);
     // verification du select typeOfMAnga 
     $typeOfManga = trim(filter_input(INPUT_POST, 'typeOfManga', FILTER_SANITIZE_NUMBER_INT));
-    var_dump($errorsArray);
     if (empty($errorsArray)) { 
         $surveyObj = new Survey($title1,$title2,$typeOfManga,1);
         $SurveyUpdate = $surveyObj->updateSurvey($idUpdate);

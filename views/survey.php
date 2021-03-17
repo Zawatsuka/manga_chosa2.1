@@ -14,6 +14,7 @@ if(isset($error)){
 
             <?php
             if(isset($_SESSION['id'])){
+                // var_dump($viewSurvey);
                 foreach($viewSurvey as $values){
                 if($values->HasVoted==true){ ?> 
             <div class=" mt-3 align-items-center">
@@ -32,7 +33,9 @@ if(isset($error)){
                 </div>
             </div>
 
-             <?php   }else{ ?>
+             <?php   }else{
+                 if(!isset($values))
+                 ?>
             <div class=" mt-3 align-items-center">
                 <div class="d-flex flex-row">
                     <div>
@@ -50,8 +53,25 @@ if(isset($error)){
                     </div>
                 </div>
             </div>
-          <?php
+            <?php
+            if(isset($_SESSION['admin']) && $_SESSION['admin']==1){?>
+            <a href="/controllers/lastSurveyCtrl.php?idDeactivated=<?= $values->id;?>" class=" fadeInLeft btn btn-outline-secondary ml-3 mt-3 mb-3 zoom">Archiver</a> 
+            <a href="/controllers/updateSurveyCtrl.php?idUpdate=<?= $values->id;?>" class=" fadeInLeft btn btn-outline-secondary ml-3 mt-3 mb-3 zoom">Modifier</a>
+            <a href="/index.php?idDeleted=<?= $values->id;?>" class=" fadeInLeft btn btn-outline-secondary ml-3 mt-3 mb-3 zoom">
+            <img src="/assets/img/delete.png" width="20" class="img-fluid zoom" alt="poubelle">
+            </a>  
+            <?php }
             }
+         }
+         if(empty($viewSurvey)){ ?>
+            <div class="container">
+            <div class="row m-3">
+            <h2>Desolé il n'y a pas encore de sondage ﾍ(;´o｀)ﾍ</h2>
+            <img src="/assets/img/desolé.gif" class="img-fluid mt-3" width="700" alt="c'est pas si mal"> 
+            </div>
+                      
+            </div> 
+          <?php  
          }
         }else{?>
 
@@ -64,11 +84,7 @@ if(isset($error)){
            </div> 
 
        <?php }
-          if(isset($_SESSION['admin']) && $_SESSION['admin']==1){?>
-            <a href="/controllers/lastSurveyCtrl.php?idDeactivated=<?= $values->id;?>" class=" fadeInLeft btn btn-outline-secondary ml-3 mt-3 mb-3">Archiver</a> 
-            <a href="/controllers/updateSurveyCtrl.php?idUpdate=<?= $values->id;?>" class=" fadeInLeft btn btn-outline-secondary ml-3 mt-3 mb-3">Modifier</a> 
-            <?php }
-             ?>
+       ?>
         </div>
     </div>
     <!-- partie commentaires -->

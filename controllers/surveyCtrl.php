@@ -18,8 +18,15 @@
     // recuperation en get de l'id du sondage
     $surveyVote1 = intval(trim(filter_input(INPUT_GET, 'idSurveyV1', FILTER_SANITIZE_NUMBER_INT)));
     $surveyVote2 = intval(trim(filter_input(INPUT_GET, 'idSurveyV2', FILTER_SANITIZE_NUMBER_INT)));
+    $DeletedId = intval(trim(filter_input(INPUT_GET, 'idDeleted', FILTER_SANITIZE_NUMBER_INT)));
    
     if(isset($_SESSION['id'])){
+        if(isset($_SESSION['admin']) && $_SESSION['admin']== 1){
+            $DeleteSurvey= new Survey(); 
+            $deletedSurvey= $DeleteSurvey->deletedSurvey($DeletedId);
+        }
+        
+
         $vote1 = new Vote(true , false);
         $vote2 = new Vote(false , true);
         $count = new Vote();
@@ -39,8 +46,10 @@
                 $value->NumberV2 =$vote->countVoteWhereId2($value->id)->votes2;
                 $viewSurvey[$i]=$value;
                 $i++; 
+
+
         }       
-                }
+    }
                 // header("Refresh:0");
         // var_dump($viewSurvey)
 

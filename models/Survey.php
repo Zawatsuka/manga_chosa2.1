@@ -96,4 +96,12 @@
         
     }
 
+    public function deletedSurvey($idDeleted){
+        $sql = "DELETE FROM `survey` WHERE `id`=:idDeleted;";
+        $sth = $this->_pdo->prepare($sql);
+        $sth->bindValue(':idDeleted',$idDeleted, PDO::PARAM_INT);
+        return $sth->execute();
+    }
+    
+
    }
