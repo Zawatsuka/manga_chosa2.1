@@ -4,7 +4,7 @@ ob_start();
 ?>
 <form method="POST" enctype="multipart/form-data">
     <div class="container mt-5">
-        <h3 class="mb-5 ml-2">Creation de sondage</h3>
+        <h3 class="mb-5 ml-2">Modification d'un sondage</h3>
         <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <label class="input-group-text" for="inputGroupSelect01">Type de Manga</label>

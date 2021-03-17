@@ -96,4 +96,14 @@ class Vote{
         $survey = $stmt->fetch();  
         return $survey;  
     }
+
+    public function count($idSurvey , $idUser){
+        $sql= "SELECT COUNT(*) FROM `vote` WHERE id_user = :idUser AND id_survey = :idSurvey";
+        $stmt = $this->_pdo->prepare($sql);
+        $stmt->bindValue(':idSurvey',$idSurvey , PDO::PARAM_INT);
+        $stmt->bindValue(':idUser',$idUser , PDO::PARAM_INT);
+        $stmt->execute();
+        $survey = $stmt->fetchColumn();  
+        return (int) $survey;  
+    }
 }

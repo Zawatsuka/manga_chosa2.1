@@ -82,11 +82,7 @@
     
     public function updateSurvey($idSurvey){
         try{
-        $sql ="UPDATE `survey` SET `title1`=:title1,
-                                    `title2`=:title2,
-                                    `id_typeofmanga`=:typeofManga,
-                                    `active` = :active)
-                                WHERE id=:idSurvey ;";
+        $sql ="UPDATE `survey` SET `title1`=:title1,`title2`=:title2,`id_typeofmanga`= :typeofManga, `active` = :active WHERE id= :idSurvey;";                            
         $stmt = $this->_pdo->prepare($sql);
         $stmt->bindValue(':title1',$this->_title1 , PDO::PARAM_STR);
         $stmt->bindValue(':title2',$this->_title2 , PDO::PARAM_STR);

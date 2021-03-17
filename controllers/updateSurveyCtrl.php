@@ -47,15 +47,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         C\'est modifié !</div>';
         if(isset($_FILES)){
             // upload de la premiere image 
-            $tmpName = $_FILES['Survey1']['tmp_name'];
-            $name ='1ER_Image_Pour_Sondage-'.$idUpdate.'.png';
+            $tmpName1 = $_FILES['Survey1']['tmp_name'];
+            $name1 ='1ER_Image_Pour_Sondage-'.$idUpdate.'.png';
             $errorFile = $_FILES['Survey1']['error'];
-            move_uploaded_file($tmpName, dirname(__FILE__).'/../assets/upload/survey/'.$name);
+            move_uploaded_file($tmpName1, dirname(__FILE__).'/../assets/upload/survey/'.$name1);
             // upload de la deuxieme image 
-            $tmpName = $_FILES['Survey2']['tmp_name'];
-            $name ='2EME_Image_Pour_Sondage-'.$idUpdate.'.png';
+            $tmpName2 = $_FILES['Survey2']['tmp_name'];
+            $name2 ='2EME_Image_Pour_Sondage-'.$idUpdate.'.png';
             $errorFile = $_FILES['Survey2']['error'];
-            move_uploaded_file($tmpName, dirname(__FILE__).'/../assets/upload/survey/'.$name);
+            move_uploaded_file($tmpName2, dirname(__FILE__).'/../assets/upload/survey/'.$name2);
         }
     } else {
         $error = '<p class="text-danger mt-2">Erreur au chargement</p>';

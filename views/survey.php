@@ -27,7 +27,7 @@ if(isset($error)){
                     <div>
                             <img src="/assets/upload/survey/2EME_Image_Pour_Sondage-<?= $values->id;?>.png"
                                 alt="'.$values->title2.'" class="ml-2 img-fluid index-img" width="400">
-                            <p class="mt-3 ml-3">Resultats : <?= $values->NumberV1 ?> votes</p>
+                            <p class="mt-3 ml-3">Resultats : <?= $values->NumberV2 ?> votes</p>
                     </div>
                 </div>
             </div>

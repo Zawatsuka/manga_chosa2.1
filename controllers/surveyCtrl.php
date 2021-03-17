@@ -6,7 +6,7 @@
     $list_type = new typeOfManga();
     $getListType = $list_type->listOfType();
 
-    // recuperation de des sondage selon un type de manga
+    // recuperation des sondage selon un type de manga
     $idTypeOfManga = intval(trim(filter_input(INPUT_GET, 'idType', FILTER_SANITIZE_NUMBER_INT)));
     if($idTypeOfManga==0){
         $idTypeOfManga=1;
@@ -22,25 +22,28 @@
     if(isset($_SESSION['id'])){
         $vote1 = new Vote(true , false);
         $vote2 = new Vote(false , true);
-
-        $addVote1 = $vote1->addVote1($_SESSION['id'] ,$surveyVote1 );
-        $addVote2 = $vote2->addVote2($_SESSION['id'],$surveyVote2 );
-        
-            $i=0;
-            $vote = new Vote();
-            
-                
+        $count = new Vote();
+        $countGood1 = $count->count($surveyVote1 , $_SESSION['id']);
+        $countGood2 = $count->count($surveyVote2 , $_SESSION['id']);
+        // var_dump($surveyVote1);
+        // var_dump($surveyVote2);
+        if(($surveyVote1 != 0 && $countGood1 == 0) || ($surveyVote2 != 0 && $countGood2 == 0) ){
+            $addVote1 = $vote1->addVote1($_SESSION['id'] ,$surveyVote1);
+            $addVote2 = $vote2->addVote2($_SESSION['id'],$surveyVote2);
+        }
+             $i=0;
+            $vote = new Vote();         
             foreach($viewSurvey as $value){
                 $value->HasVoted=$vote->idAccordingToASurvey($value->id,$_SESSION['id']);
                 $value->NumberV1 =$vote->countVoteWhereId1($value->id)->votes1;
                 $value->NumberV2 =$vote->countVoteWhereId2($value->id)->votes2;
                 $viewSurvey[$i]=$value;
-                $i++;  
-                
+                $i++; 
+        }       
                 }
-        // var_dump($viewSurvey);
+                // header("Refresh:0");
+        // var_dump($viewSurvey)
 
-    }
     
    
    
