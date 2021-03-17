@@ -24,4 +24,5 @@
         $listOfType = $sth->fetch();
         return $listOfType; 
     }
+    
 }
