@@ -34,7 +34,6 @@ if(isset($error)){
             </div>
 
              <?php   }else{
-                 if(!isset($values))
                  ?>
             <div class=" mt-3 align-items-center">
                 <div class="d-flex flex-row">
@@ -54,6 +53,7 @@ if(isset($error)){
                 </div>
             </div>
             <?php
+            var_dump($_SESSION['admin']);
             if(isset($_SESSION['admin']) && $_SESSION['admin']==1){?>
             <a href="/controllers/lastSurveyCtrl.php?idDeactivated=<?= $values->id;?>" class=" fadeInLeft btn btn-outline-secondary ml-3 mt-3 mb-3 zoom">Archiver</a> 
             <a href="/controllers/updateSurveyCtrl.php?idUpdate=<?= $values->id;?>" class=" fadeInLeft btn btn-outline-secondary ml-3 mt-3 mb-3 zoom">Modifier</a>
@@ -62,6 +62,7 @@ if(isset($error)){
             </a>  
             <?php }
             }
+            
             include(dirname(__FILE__).'/../controllers/commentviewsCTRL.php');
          }
          if(empty($viewSurvey)){ ?>
