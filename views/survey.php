@@ -16,7 +16,10 @@ if(isset($error)){
             if(isset($_SESSION['id'])){
                 // var_dump($viewSurvey);
                 foreach($viewSurvey as $values){
-                if($values->HasVoted==true){ ?>
+                if($values->HasVoted==true){ 
+                    include('template/typeOfMangaMenu.php');
+                    ?>
+
             <div class=" mt-3 align-items-center">
                 <div class="d-flex flex-row">
                     <div>
@@ -34,20 +37,8 @@ if(isset($error)){
             </div>
 
             <?php   }else{
+                include('template/typeOfMangaMenu.php');
                  ?>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <label class="input-group-text" for="inputGroupSelect01">Options</label>
-                </div>
-                <select class="custom-select" id="inputGroupSelect01">
-                    <option selected>Choose...</option>
-                    <?php foreach($getListType as $value){?>
-                        <option value="<?=$values->id?>"><?=$values->typeofmanga?></option>
-
-                        <?php
-                        } ?>
-                </select>
-            </div>
             <div class=" mt-3 align-items-center">
                 <div class="d-flex flex-row">
                     <div>
@@ -76,7 +67,10 @@ if(isset($error)){
                 class=" fadeInLeft btn btn-outline-secondary ml-3 mt-3 mb-3 zoom">
                 <img src="/assets/img/delete.png" width="20" class="img-fluid zoom" alt="poubelle">
             </a>
-            <?php }
+
+            <?php }?>
+           
+            <?php
             }
             
             include(dirname(__FILE__).'/../controllers/commentviewsCTRL.php');

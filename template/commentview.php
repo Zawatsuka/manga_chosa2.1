@@ -31,7 +31,7 @@ foreach($viewsComment as $comment){?>
         <p class="comment ml-5 "><?=$comment->comments?></p>
     <?php if($_SESSION['id']==$comment->idOfUser){?>
         <a class="ml-5 text-secondary" 
-        href="/controllers/updateCommentctrl.php?idComm=<?=$comment->idOfComment ?>">modifier</a>
+        href="/controllers/updateCommentctrl.php?idComm=<?=$comment->idOfComment?>&idType=<?=$values->id_typeofmanga?>">modifier</a>
         <a class=" ml-1 text-secondary" 
         href="/index.php?idDeleted=<?=$comment->idOfComment?>&idType=<?=$values->id_typeofmanga?>">
         supprimer
