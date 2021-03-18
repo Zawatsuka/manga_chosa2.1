@@ -12,7 +12,9 @@ $viewUser = $userObj->UserPage($idUser);
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && $idUser == $_SESSION['id']) {
     $errorsArray = array();
     if(isset($_FILES)){
+        var_dump($_FILES['profilImg']['type']);
         // upload de l'image 
+        $typeOfImage= $_FILES['profilImg']['type'];
         $tmpName = $_FILES['profilImg']['tmp_name'];
         $name ='profil-'. $viewUser->id.'.jpg';
         $size = $_FILES['profilImg']['size'];
@@ -20,11 +22,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $idUser == $_SESSION['id']) {
         move_uploaded_file($tmpName, dirname(__FILE__).'/../assets/upload/'.$name);
 
         // crop de l'image
-        $im = imagecreatefromjpeg('../assets/upload/'.$name);
+        if($typeOfImage =="image/jpeg"){
+            $im = imagecreatefromjpeg('../assets/upload/'.$name);
+        }else if($typeOfImage=="image/png"){
+            $im = imagecreatefrompng('../assets/upload/'.$name);
+        } 
         $size = min(imagesx($im), imagesy($im));
+        
         $im2 = imagecrop($im, ['x' => 0, 'y' => 0, 'width' => $size, 'height' => $size]);
         if ($im2 !== FALSE) {
-            imagejpeg($im2, '../assets/upload/'.$name);
+            if($typeOfImage =="image/jpeg"){
+                imagejpeg($im2, '../assets/upload/'.$name);
+            }else if($typeOfImage=="image/png"){
+                imagepng($im2, '../assets/upload/'.$name);
+            }
             imagedestroy($im2);
         }
         imagedestroy($im);
