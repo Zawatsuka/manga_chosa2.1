@@ -5,8 +5,13 @@ require_once('../models/TypeOfManga.php');
 
 $idUpdate = intval(trim(filter_input(INPUT_GET, 'idUpdate', FILTER_SANITIZE_NUMBER_INT)));
 $viewSurveyObj = new Survey();
-$viewSurvey = $viewSurveyObj->viewSurvey($idUpdate);
 // var_dump($viewSurvey);
+if(isset($idUpdate)){
+    $viewSurvey = $viewSurveyObj->viewSurvey($idUpdate);
+}
+if($idUpdate!=$viewSurvey->id || $idUpdate <= 0) {
+    header('location: /index.php');
+}
 
 $list_type = new typeOfManga();
 $getListType = $list_type->listOfType();

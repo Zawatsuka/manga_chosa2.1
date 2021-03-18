@@ -7,7 +7,11 @@ setlocale(LC_TIME, 'fr_FR.utf8', 'fra.utf8');
 
 $idUser = intval(trim(filter_input(INPUT_GET, 'idUser', FILTER_SANITIZE_NUMBER_INT)));
 $userObj = new User();
-$viewUser = $userObj->UserPage($idUser);
+if(isset($idUser)){
+    $viewUser = $userObj->UserPage($idUser);}
+if($idUser!=$viewUser->id || $idUser <= 0) {
+    header('location: /index.php');
+}
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && $idUser == $_SESSION['id']) {
     $errorsArray = array();
@@ -19,7 +23,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $idUser == $_SESSION['id']) {
         $name ='profil-'. $viewUser->id.'.jpg';
         $size = $_FILES['profilImg']['size'];
         $error = $_FILES['profilImg']['error'];
-        move_uploaded_file($tmpName, dirname(__FILE__).'/../assets/upload/'.$name);
+        if($typeOfImage =="image/jpeg" || $typeOfImage=="image/png"){
+            move_uploaded_file($tmpName, dirname(__FILE__).'/../assets/upload/'.$name);
+        
+        
 
         // crop de l'image
         if($typeOfImage =="image/jpeg"){
@@ -39,6 +46,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $idUser == $_SESSION['id']) {
             imagedestroy($im2);
         }
         imagedestroy($im);
+        }else{
+            $errorsArray['type_error'] = '<p class="text-danger">Ce n\'est pas le bon format de fichier fichier</p>';
+        }
     }
 
 

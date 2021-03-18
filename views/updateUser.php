@@ -23,6 +23,8 @@ if(isset($isOk)){
                                 <label class="custom-file-label" for="inputGroupFile04">Changer son image de profil ?</label>
                             </div>
                         </div>
+                        <p class="ml-2 sizeMP">Format a respecter: png/jpeg</p>
+                        <?= $errorsArray['type_error'] ?? '' ?>
 
                         <!-- --------------- partie mail ---------- -->
                         <div class="input-group mt-3">
