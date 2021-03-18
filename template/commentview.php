@@ -33,7 +33,7 @@ foreach($viewsComment as $comment){?>
         <a class="ml-5 text-secondary" 
         href="/controllers/updateCommentctrl.php?idComm=<?=$comment->idOfComment ?>">modifier</a>
         <a class=" ml-1 text-secondary" 
-        href="/controllers/commentviewsCTRL.php?idDeleted=<?=$comment->idOfComment?>">
+        href="/index.php?idDeleted=<?=$comment->idOfComment?>&idType=<?=$values->id_typeofmanga?>">
         supprimer
         </a>
         <?php } ?>

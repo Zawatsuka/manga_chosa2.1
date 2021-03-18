@@ -58,5 +58,11 @@
         $sth->bindValue(':idComm',$idComm , PDO::PARAM_INT);
         return $sth->execute();
     }
+    public function deleteComm($idDelete){
+        $sql = "DELETE FROM `comment` WHERE `id`=:idDelete";
+        $sth = $this->_pdo->prepare($sql);
+        $sth->bindValue(':idDelete',$idDelete , PDO::PARAM_INT);
+        return $sth->execute();
+    }
 
    } 

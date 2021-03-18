@@ -6,11 +6,13 @@ session_start();
     $CommentValue = $valueComment->viewCommentWithIdComm($idComment);
     var_dump($CommentValue);
    foreach($CommentValue as $value){
-       if($_SERVER['REQUEST_METHOD'] == 'POST' && $_SESSION['id']==$value=$id_user){
+       if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $comment = trim(filter_input(INPUT_POST, 'comments', FILTER_SANITIZE_STRING));
         $updateComm = new Comment($comment);
-        $UpComm =$updateComm-> UpdateComm($idComment);
-    }
+        $UpComm =$updateComm->UpdateComm($idComment);
+        $isOk = '<div class=" slideInDown alert alert-success" role="alert">
+        C\'est modifié !</div>';
+       }
    }
     
     
