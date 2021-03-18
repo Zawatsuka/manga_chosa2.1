@@ -9,6 +9,6 @@
     } ?>
     </ul>
     <div class="d-flex mb-0 justify-content-center fixImg">
-        <img src="../../assets/img/chosachan2.png" class="img-fluid mb-0 mt-5" width="250" alt="">
+        <img src="/assets/img/manga chosa other1.png" class="img-fluid mb-0 mt-5" width="350" alt="">
     </div>
 </div>

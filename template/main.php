@@ -8,6 +8,8 @@
             include(dirname(__FILE__).'/right2.php');
         }else if(isset($typeRightDesactive) && !empty($typeRightDesactive)){
             include(dirname(__FILE__).'/rightDesactive.php');
+        }else if(isset($typeRightTalk) && !empty($typeRightTalk)){
+            include(dirname(__FILE__).'/rightTalk.php'); 
         }else{
             include(dirname(__FILE__).'/Right.php'); 
         }

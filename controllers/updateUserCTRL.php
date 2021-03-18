@@ -138,14 +138,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $idUser == $_SESSION['id']) {
         }
         // var_dump($usertab); 
         $testRegister = $usertab->updateUser($idUser);
+        if($testRegister){
+            $_SESSION['pseudo'] = $viewUser->pseudo;
+        }
         $isOk = '<div class=" slideInDown alert alert-success" role="alert">
         C\'est modifié !</div>';
     } else {
         $error = '<p class="text-danger mt-2">Erreur au chargement</p>';
     }
 }
-$userObj = new User();
-$viewUser = $userObj->UserPage($idUser);
+// $userObj = new User();
+// $viewUser = $userObj->UserPage($idUser);
 
 
 

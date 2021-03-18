@@ -1,5 +1,5 @@
 <?php
-$typeRight= true;
+$typeRightTalk= true;
 ob_start();
 ?>
  <!-- partie gauche du site -->
