@@ -25,4 +25,14 @@
         return $listOfType; 
     }
     
+    public function addType(){
+        try{
+            $sql = "INSERT INTO `typeofmanga`(`typeofmanga`) VALUES (:typeOfManga)";
+            $sth = $this->_pdo->prepare($sql);
+            $sth->bindValue(':typeOfManga',$this->_typeOfManga , PDO::PARAM_STR);
+            return $sth->execute();
+        }catch(PDOException $e){
+            return $e->getMessage();
+    }
+    }
 }
