@@ -16,12 +16,27 @@
 // var_dump($viewsComment);
 foreach($viewsComment as $comment){?>
     <div>
-        <h3 class="mt-4 ml-4 text-comment"><img src="/assets/img/user.png" width="20" class="img-fluid" alt="">
-        <?=$comment->id_user?>
+        <h3 class="mt-4 ml-2 text-comment">
+        <?php
+        $file='assets/upload/profil-'.$comment->idOfUser.'.jpg';
+        if(file_exists($file)==true){?>
+            <img src="/assets/upload/profil-<?=$comment->idOfUser?>.jpg" class=" ml-4 img-fluid rounded-circle p-0" width="33" alt="">
+            <?php }else{ ?>
+            <img src="/assets/img/user.png" class=" ml-4  img-fluid" width="10" alt="user">
+           <?php }?>
+        <?=$comment->pseudo?>
         </h3>
     </div>
     <div>
-        <p class="comment ml-4 "><?=$comment->comments?></p>
+        <p class="comment ml-5 "><?=$comment->comments?></p>
+    <?php if($_SESSION['id']==$comment->idOfUser){?>
+        <a class="ml-5 text-secondary" 
+        href="/controllers/updateCommentctrl.php?idComm=<?=$comment->idOfComment ?>">modifier</a>
+        <a class=" ml-1 text-secondary" 
+        href="/controllers/commentviewsCTRL.php?idDeleted=<?=$comment->idOfComment?>">
+        supprimer
+        </a>
+        <?php } ?>
     </div>
     <?php } ?>
 

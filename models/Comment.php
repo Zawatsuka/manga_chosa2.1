@@ -26,12 +26,37 @@
     }
 
     public function viewComment($idSurvey){
-            $sql = "SELECT * FROM `comment` WHERE `id_survey`=:idSurvey;";
+            $sql = "SELECT `comment`.`id` AS 'idOfComment',
+                            `comment`.`comments`,
+                            `user`.`pseudo`,
+                            `user`.`id`AS 'idOfUser' 
+                            FROM `comment`
+                            INNER JOIN `user` ON `comment`.`id_user` = `user`.`id`
+                            WHERE `id_survey`= :idSurvey;";
             $sth = $this->_pdo->prepare($sql);
             $sth->bindValue(':idSurvey',$idSurvey , PDO::PARAM_INT);
             $sth->execute();
-            $patients = $sth->fetchAll();
-            return $patients; 
-        
+            $comment = $sth->fetchAll();
+            return $comment; 
     }
+
+    public function viewCommentWithIdComm($idComm){
+        $sql = "SELECT * FROM `comment` WHERE id = :idComm";
+        $sth = $this->_pdo->prepare($sql);
+        $sth->bindValue(':idComm',$idComm , PDO::PARAM_INT);
+        $sth->execute();
+        $comment = $sth->fetch();
+        return $comment; 
+    }
+    
+    public function UpdateComm($idComm){
+        $sql = "UPDATE `comment`
+        SET `comments` = :comment
+        WHERE `id` = :idComm";
+        $sth = $this->_pdo->prepare($sql);
+        $sth->bindValue(':comment',$this->_comment , PDO::PARAM_STR);
+        $sth->bindValue(':idComm',$idComm , PDO::PARAM_INT);
+        return $sth->execute();
+    }
+
    } 

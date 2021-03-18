@@ -61,8 +61,8 @@ class User{
         $stmt = $this->_pdo->prepare($sql);
         $stmt-> bindValue(':idUser' , $idUser , PDO::PARAM_INT);
         $stmt->execute();
-        $patients = $stmt->fetch();
-        return $patients; 
+        $user = $stmt->fetch();
+        return $user; 
     }
 
     public function updateUser($idUser){

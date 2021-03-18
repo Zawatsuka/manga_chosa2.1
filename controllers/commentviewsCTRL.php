@@ -1,7 +1,9 @@
 <?php
     require_once(dirname(__FILE__).'/../models/Comment.php');
+    require_once(dirname(__FILE__).'/../models/User.php');
     $comments = trim(filter_input(INPUT_POST, 'comments',FILTER_SANITIZE_STRING));
     $idUser= $_SESSION['id'];
+    
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $errorArray = array();
         if(!isset($idUser)){
@@ -19,6 +21,7 @@
     }
     $commentSet = new Comment();
     $viewsComment = $commentSet->viewComment($values->id);
+    // var_dump($viewsComment);
     
     
     include(dirname(__FILE__).'/../template/commentview.php');
