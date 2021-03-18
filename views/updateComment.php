@@ -5,7 +5,7 @@ if(isset($isOk)){
     echo $isOk;
 }
 ?>
-<form action="#" method="post">
+<form method="post">
     <div class="container">
         <div class="row">
             <div class="col-9">
