@@ -37,7 +37,7 @@ echo '<a class="ml-3" href="/controllers/listOfUserCTRL.php">
                         </p>
                         <p class="card-text">
                         <?php if($idUser == $_SESSION['id']){
-                            echo '<a class="text-secondary" href="/controllers/updateUserCTRL.php?idUser=.'.$viewUser->id.'.">
+                            echo '<a class="text-secondary" href="/controllers/updateUserCTRL.php?idUser='.$viewUser->id.'">
                                 Modifier
                                 <img src="/assets/img/update_1.png" class="img-fluid" width="20"
                                     alt="pictogramme modifier">

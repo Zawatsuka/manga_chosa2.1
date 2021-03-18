@@ -33,6 +33,20 @@
             return $sth->execute();
         }catch(PDOException $e){
             return $e->getMessage();
+        }
     }
+
+    public function updateType($idOfType){
+        try{
+            $sql="UPDATE `typeofmanga` 
+            SET `typeofmanga`= :typeOfManga
+           WHERE `id` = :id;";
+            $sth = $this->_pdo->prepare($sql);
+            $sth->bindValue(':typeOfManga',$this->_typeOfManga , PDO::PARAM_STR);
+            $sth->bindValue(':idOfType',$idOfType , PDO::PARAM_INT);
+            return $sth->execute();
+        }catch(PDOException $e){
+            return $e->getMessage();
+        }
     }
 }
