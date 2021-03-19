@@ -65,4 +65,19 @@
         return $sth->execute();
     }
 
+    public function viewCommentforUser($idUser){
+        $sql = "SELECT `comment`.`id` AS 'idOfComment',
+                        `comment`.`comments`,
+                        `user`.`pseudo`,
+                        `user`.`id`AS 'idOfUser' 
+                        FROM `comment`
+                        INNER JOIN `user` ON `comment`.`id_user` = `user`.`id`
+                        WHERE `id_user`= :idUser;";
+        $sth = $this->_pdo->prepare($sql);
+        $sth->bindValue(':idUser',$idUser , PDO::PARAM_INT);
+        $sth->execute();
+        $comment = $sth->fetchAll();
+        return $comment; 
+}
+
    } 

@@ -13,14 +13,15 @@ echo '<a class="ml-3" href="/controllers/listOfUserCTRL.php">
     <div class="row">
         <div class="card mb-3" style="max-width: 540px;">
             <div class="row no-gutters">
-                <div class="col-md-4"> 
-                <?php
+                <div class="col-4">
+                    <?php
                 $file='../assets/upload/profil-'.$viewUser->id.'.jpg';
                 if(file_exists($file)==true){?>
-                    <img src="/assets/upload/profil-<?=$viewUser->id?>.jpg" class=" mt-5 m-3 ml-4 img-fluid rounded-circle" width="400" alt="">
+                    <img src="/assets/upload/profil-<?=$viewUser->id?>.jpg"
+                        class=" mt-5 m-3 ml-4 img-fluid rounded-circle" width="400" alt="">
                     <?php }else{ ?>
-                    <img src="/assets/img/user2.png" class="m-3 ml-4  img-fluid" width="200" alt="user">
-                   <?php }?>
+                    <img src="/assets/img/user2.png" class="m-3 ml-4  img-fluid" width="180" alt="user">
+                    <?php }?>
                 </div>
                 <div class="col-md-8">
                     <div class="card-body p-5">
@@ -36,7 +37,7 @@ echo '<a class="ml-3" href="/controllers/listOfUserCTRL.php">
             }?>
                         </p>
                         <p class="card-text">
-                        <?php if($idUser == $_SESSION['id']){
+                            <?php if($idUser == $_SESSION['id']){
                             echo '<a class="text-secondary" href="/controllers/updateUserCTRL.php?idUser='.$viewUser->id.'">
                                 Modifier
                                 <img src="/assets/img/update_1.png" class="img-fluid" width="20"
@@ -56,6 +57,7 @@ echo '<a class="ml-3" href="/controllers/listOfUserCTRL.php">
     </div>
 
 </div>
+
 <div class="collapse" id="collapseExample">
     <div class="card card-body">
         <p>Role : <?php
@@ -69,6 +71,25 @@ echo '<a class="ml-3" href="/controllers/listOfUserCTRL.php">
         <p>Anniversaire : <?=$viewUser->birthDate;?> </p>
         <p>Civilité : <?=$viewUser->gender;?> </p>
 
+    </div>
+</div>
+
+<div class="col-6 flipInX ">
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">Tes derniers commentaires</h5>
+            <div class="overflowDiv">
+                <?php foreach($userComments as $values){?>
+                <p class="card-text">
+                    <img src="/assets/upload/profil-<?=$values->idOfUser ?>.jpg" class="img-fluid rounded-circle"
+                        width="35" alt="<?=$values->pseudo ?>">
+                    <?=$values->pseudo ?>
+                </p>
+                <p class="card-text"> <?=$values->comments ?></p>
+                <?php }?>
+            </div>
+
+        </div>
     </div>
 </div>
 

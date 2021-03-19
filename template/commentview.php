@@ -36,7 +36,14 @@ foreach($viewsComment as $comment){?>
         href="/index.php?idDeleted=<?=$comment->idOfComment?>&idType=<?=$values->id_typeofmanga?>">
         supprimer
         </a>
-        <?php } ?>
+        <?php }else if($_SESSION['admin']==1){?>
+            <a class=" ml-5 text-secondary" 
+        href="/index.php?idDeleted=<?=$comment->idOfComment?>&idType=<?=$values->id_typeofmanga?>">
+        supprimer
+        </a>
+        <?php
+        }
+         ?>
     </div>
     <?php } ?>
 
