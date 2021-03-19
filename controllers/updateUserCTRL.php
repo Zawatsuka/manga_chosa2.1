@@ -6,6 +6,7 @@ setlocale(LC_TIME, 'fr_FR.utf8', 'fra.utf8');
 
 
 $idUser = intval(trim(filter_input(INPUT_GET, 'idUser', FILTER_SANITIZE_NUMBER_INT)));
+if(isset($_SESSION['id']) && $_SESSION['id']==$idUser){
 $userObj = new User();
 if(isset($idUser)){
     $viewUser = $userObj->UserPage($idUser);}
@@ -167,6 +168,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $idUser == $_SESSION['id']) {
     } else {
         $error = '<p class="text-danger mt-2">Erreur au chargement</p>';
     }
+}
+}else{
+    header('location: /index.php');
 }
 // $userObj = new User();
 // $viewUser = $userObj->UserPage($idUser);

@@ -2,7 +2,7 @@
 session_start();
 require_once('../models/TypeOfManga.php');
 require_once('../utils/regex.php');
-
+if(isset($_SESSION['admin']) && $_SESSION['admin']==1){
 $idUpdate = intval(trim(filter_input(INPUT_GET, 'idUpdate', FILTER_SANITIZE_NUMBER_INT)));
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -27,7 +27,9 @@ if(!empty($type)){
     }
 
 }
-
+}else{
+    header('location: /index.php');
+}
 
 include(dirname(__FILE__) . '/../template/header.php');
 include(dirname(__FILE__) . '/../views/updateType.php');

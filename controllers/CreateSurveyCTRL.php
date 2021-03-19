@@ -1,9 +1,10 @@
 
 <?php 
+session_start();
 require_once('../utils/regex.php');
 require_once('../models/Survey.php');
 require_once('../models/TypeOfManga.php');
-
+if($_SESSION['admin']==1 && isset($_SESSION['admin'])){
 $list_type = new typeOfManga();
 $getListType = $list_type->listOfType();
 
@@ -67,9 +68,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $error = '<p class="text-danger mt-2">Erreur au chargement</p>';
     }
 }
+}else{
+    header('location: /index.php');
+}
 
-
-    session_start();
     include(dirname(__FILE__).'/../template/header.php');
     include(dirname(__FILE__).'/../views/createSurvey.php');
     include(dirname(__FILE__).'/../template/footer.php');
