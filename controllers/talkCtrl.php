@@ -18,7 +18,7 @@
             $message = trim(filter_input(INPUT_POST, 'message', FILTER_SANITIZE_STRING));
     
             $to      = $_SESSION['mail'];
-            $subject = 'Envoi d\'un message par'. $_SESSION['pseudo'];
+            $subject = 'Envoi d\'un message par '. $pseudo;
             $headers = array(
             'From' => 'thomaslucas2904@gmail.com',
             'Reply-To' => 'thomaslucas2904@gmail.com',
