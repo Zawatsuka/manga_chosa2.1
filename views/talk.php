@@ -1,6 +1,7 @@
 <?php
 $typeRightTalk= true;
 ob_start();
+if(isset($_SESSION['id'])){
 ?>
  <!-- partie gauche du site -->
  <div class="container-fluid fadeInLeft">
@@ -17,13 +18,25 @@ ob_start();
                         </div>
                       
                         <div class="d-flex justify-content-end w-75">
-                            <button class="mt-4 mr-0 p-4 zoom button-speak">Envoi ici !</button>
+                            <button type="submit" class="mt-4 mr-0 p-4 zoom button-speak">Envoi ici !</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
 <?php
+}else{?>
+
+<div class="container">
+                <div class="row m-3">
+                    <h2>Vous devez être connecté pour pouvoir envoyé un message</h2>
+                    <img src="/assets/img/natsu.gif" class="img-fluid mt-3" width="700" alt="c'est pas si mal">
+                </div>
+
+            </div>
+
+<?php
+}
 $mainContent = ob_get_clean();
 require('../template/main.php');
 ?>
