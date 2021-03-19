@@ -1,5 +1,8 @@
 <div class="col d-flex flex-column justify-content-between d-none d-sm-none d-md-block bg-right">
     <!-- liste des differents genres -->
+    <div>
+        
+    </div>
     <ul>
         <?php foreach($getListType as $value){?>
 

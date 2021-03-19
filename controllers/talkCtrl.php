@@ -1,5 +1,22 @@
 <?php 
     session_start();
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        $errorsArray = array();
+        $pseudo = trim(filter_input(INPUT_POST, 'pseudo', FILTER_SANITIZE_STRING));
+        if (!empty($pseudo)) {
+
+            $testRegex = preg_match($regexPseudo, $pseudo);
+            if ($testRegex == false) {
+                $errorsArray['pseudo_error'] = 'Le pseudo n\'est pas valide';
+            }
+        } else {
+            $errorsArray['$pseudo_error'] = 'Le champ n\'est pas rempli';
+        }
+
+        $message = trim(filter_input(INPUT_POST, 'message', FILTER_SANITIZE_STRING));
+
+    }
+
     include(dirname(__FILE__).'/../template/header.php');
     include(dirname(__FILE__).'/../views/talk.php');
     include(dirname(__FILE__).'/../template/footer.php');

@@ -40,7 +40,7 @@
         try{
             $sql="UPDATE `typeofmanga` 
             SET `typeofmanga`= :typeOfManga
-           WHERE `id` = :id;";
+           WHERE `id` = :idOfType;";
             $sth = $this->_pdo->prepare($sql);
             $sth->bindValue(':typeOfManga',$this->_typeOfManga , PDO::PARAM_STR);
             $sth->bindValue(':idOfType',$idOfType , PDO::PARAM_INT);
@@ -48,5 +48,12 @@
         }catch(PDOException $e){
             return $e->getMessage();
         }
+    }
+
+    public function deletedType($idType){
+        $sql = "DELETE FROM `typeofmanga` WHERE `id`= :idType";
+        $sth = $this->_pdo->prepare($sql);
+        $sth->bindValue(':idType',$idType, PDO::PARAM_INT);
+        return $sth->execute();
     }
 }

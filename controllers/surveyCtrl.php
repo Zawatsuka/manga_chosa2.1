@@ -24,6 +24,10 @@
         if(isset($_SESSION['admin']) && $_SESSION['admin']== 1){
             $DeleteSurvey= new Survey(); 
             $deletedSurvey= $DeleteSurvey->deletedSurvey($DeletedId);
+
+            // $Type = new typeOfManga();
+            // $idDeleted = intval(trim(filter_input(INPUT_GET, 'idDeleted', FILTER_SANITIZE_NUMBER_INT)));
+            // $deleted = $Type->deletedType($idDeleted);
         }
         
 
@@ -48,7 +52,8 @@
                 $i++; 
 
 
-        }       
+        }
+    
     }
                 // header("Refresh:0");
         // var_dump($viewSurvey)

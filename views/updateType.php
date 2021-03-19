@@ -11,10 +11,10 @@ if(isset($isOk)){
             <div class="col-9">
                 <label class="mt-3">Modification d'un type de manga</label>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" name='type' id="basic-url" aria-describedby="basic-addon3">
+                    <input type="text" class="form-control" name='type' id="basic-url" aria-describedby="basic-addon3" value="<?=$viewType->typeofmanga?>">
                 </div>
                 <button type="submit" class="btn btn-secondary">Modifier</button>
-                <a href="#" class="btn btn-danger">supprimer</a>
+                <a href="/controllers/updateTypeCTRL.php?idDeleted=<?=$viewType->id?>" class="btn btn-danger">supprimer</a>
             </div>
         </div>
     </div>

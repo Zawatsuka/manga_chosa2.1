@@ -89,7 +89,7 @@ if(isset($error)){
 
             <div class="container">
                 <div class="row m-3">
-                    <h2>Vous devez etre connecter pour avoir accés aux sondages</h2>
+                    <h2>Vous devez être connecté pour avoir accès aux sondages</h2>
                     <img src="/assets/img/david.gif" class="img-fluid mt-3" width="700" alt="c'est pas si mal">
                 </div>
 

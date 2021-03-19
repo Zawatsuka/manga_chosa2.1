@@ -89,6 +89,7 @@ $testRegister = $user->addUser();
     if(empty($errorsArray)){
         $_SESSION['id'] = $testRegister;
         $_SESSION['pseudo'] = $pseudo;
+        $_SESSION['mail'] = $mail;
     }
 
 }

@@ -7,12 +7,12 @@ ob_start();
             <!-- sondage -->
             <div class="row ">
                 <div class="col-12">
-                    <form class="d-flex flex-column">
+                    <form method="POST" class="d-flex flex-column">
                         <div>
-                            <input type="text" class="m-3 p-3 name-tag zoom" placeholder="Ton Nom / Pseudo">
+                            <input type="text" class="m-3 p-3 name-tag zoom" placeholder="Ton Nom / Pseudo" name='pseudo'>
                         </div>
                         <div>
-                            <textarea class="ml-md-3 zone-msg zoom d-md-block mw-100 w-75 w-sm-100" name="" id=""
+                            <textarea class="ml-md-3 zone-msg zoom d-md-block mw-100 w-75 w-sm-100" name="message" 
                                 rows="20" placeholder="Donne nous ton p'tit message !"></textarea>
                         </div>
                       
