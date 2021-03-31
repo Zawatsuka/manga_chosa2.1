@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $idUser == $_SESSION['id']) {
             imagedestroy($im2);
         }
         imagedestroy($im);
-        }else{
+        }else if($_FILES==false){
             $errorsArray['type_error'] = '<p class="ml-2 sizeMP text-danger">Ce n\'est pas le bon format de fichier</p>';
         }
     }
@@ -145,11 +145,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $idUser == $_SESSION['id']) {
         $errorsArray['birthdate_error'] = 'Le champ n\'est pas rempli';
     }
 
-
-
-
-
-
     $verifyPassword = password_verify($lastPassword, $viewUser->password);
     if (empty($errorsArray)) {
         // j'ajoute false pour dire que le user n'est pas admin 
@@ -172,8 +167,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $idUser == $_SESSION['id']) {
 }else{
     header('location: /index.php');
 }
-// $userObj = new User();
-// $viewUser = $userObj->UserPage($idUser);
+$userObj = new User();
+$viewUser = $userObj->UserPage($idUser);
 
 
 
