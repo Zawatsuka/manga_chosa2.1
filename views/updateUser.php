@@ -20,16 +20,16 @@ if(isset($isOk)){
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" id="inputGroupFile04"
                                     aria-describedby="inputGroupFileAddon04" name="profilImg">
-                                <label class="custom-file-label" for="inputGroupFile04">Changer son image de profil ?</label>
+                                <label class="custom-file-label" for="inputGroupFile04">Changer son image de profil
+                                    ?</label>
                             </div>
                         </div>
-                        <p class="ml-2 sizeMP">Format a respecter: png/jpeg</p>
-                        <?= $errorsArray['type_error'] ?? '' ?>
-
+                        <p class="ml-2 sizeMP">Format a respecter: png/jpeg et la taille de l'image ne doit pas depasser 2MO</p>
+                            <?= $errorsArray['type_error'] ?? '' ?>
                         <!-- --------------- partie mail ---------- -->
                         <div class="input-group mt-3">
                             <input type="text" class="form-control" placeholder="Adresse Email ╰( ･ ᗜ ･ )╯"
-                                aria-label="Dollar amount (with dot and two decimal places)" name="mail"
+                                aria-label="mail" name="mail"
                                 value="<?=$viewUser->mail;?>" required>
                             <div class="input-group-append">
                                 <span class="input-group-text">@</span>

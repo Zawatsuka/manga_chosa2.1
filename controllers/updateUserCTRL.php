@@ -17,14 +17,14 @@ if($idUser!=$viewUser->id || $idUser <= 0) {
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && $idUser == $_SESSION['id']) {
     $errorsArray = array();
     if(isset($_FILES)){
-        var_dump($_FILES['profilImg']['type']);
         // upload de l'image 
         $typeOfImage= $_FILES['profilImg']['type'];
         $tmpName = $_FILES['profilImg']['tmp_name'];
         $name ='profil-'. $viewUser->id.'.jpg';
         $size = $_FILES['profilImg']['size'];
+        var_dump($size);
         $error = $_FILES['profilImg']['error'];
-        if($typeOfImage =="image/jpeg" || $typeOfImage=="image/png"){
+        if(($typeOfImage =="image/jpeg" || $typeOfImage=="image/png") && $_FILES['profilImg']['size'] <= 2000000){
             move_uploaded_file($tmpName, dirname(__FILE__).'/../assets/upload/'.$name);
         
         
@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $idUser == $_SESSION['id']) {
         }
         imagedestroy($im);
         }else{
-            $errorsArray['type_error'] = '<p class="text-danger">Ce n\'est pas le bon format de fichier fichier</p>';
+            $errorsArray['type_error'] = '<p class="ml-2 sizeMP text-danger">Ce n\'est pas le bon format de fichier</p>';
         }
     }
 
