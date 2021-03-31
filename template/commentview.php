@@ -36,7 +36,7 @@ foreach($viewsComment as $comment){?>
         href="/index.php?idDeleted=<?=$comment->idOfComment?>&idType=<?=$values->id_typeofmanga?>">
         supprimer
         </a>
-        <?php }else if($_SESSION['admin']==1){?>
+        <?php }else if(isset($_SESSION['admin'])&& $_SESSION['admin']==1){?>
             <a class=" ml-5 text-secondary" 
         href="/index.php?idDeleted=<?=$comment->idOfComment?>&idType=<?=$values->id_typeofmanga?>">
         supprimer

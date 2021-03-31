@@ -264,5 +264,9 @@ ul {
     content: "✖";
 }
 .overflowDiv{
+    padding: 15px;
+    width: 100%;
+    height: 400px;
     overflow: scroll;
 }
+

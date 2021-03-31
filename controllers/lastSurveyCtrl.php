@@ -12,7 +12,7 @@
         $idType=1;
     }
     $survey= new Survey();
-    if(isset($_SESSION['id']) && $_SESSION['admin']==1){
+    if(isset($_SESSION['admin']) && $_SESSION['admin']==1){
         $surveyDeactivated = $survey->DesactiveSurvey($idDeactivated); 
     }
     $viewSurveyDesactive = $survey->viewsAllSurveyDesactive($idType);

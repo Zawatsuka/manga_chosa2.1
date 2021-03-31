@@ -79,7 +79,8 @@ echo '<a class="ml-3" href="/controllers/listOfUserCTRL.php">
         <div class="card-body">
             <h5 class="card-title">Tes derniers commentaires</h5>
             <div class="overflowDiv">
-                <?php foreach($userComments as $values){?>
+                <?php foreach($userComments as $values){
+                    ?>
                 <p class="card-text">
                     <img src="/assets/upload/profil-<?=$values->idOfUser ?>.jpg" class="img-fluid rounded-circle"
                         width="35" alt="<?=$values->pseudo ?>">
