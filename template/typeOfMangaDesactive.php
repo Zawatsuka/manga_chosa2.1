@@ -8,7 +8,7 @@
                             </button>
                             <div class="dropdown-menu"
                             aria-labelledby="dropdownMenuButton">
-                            <?php foreach($getListType as $value){?>
+                            <?php foreach($getListTypeDesactive as $value){?>
                                 <a class="dropdown-item" href="/index.php?idType=<?=$value->id; ?>">
                                 <?=$value->typeofmanga; ?>
                                 </a>
