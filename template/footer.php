@@ -8,13 +8,13 @@
                 réseaux !</h5>
             <div class="d-flex align-item-center mt-4">
                 <img src="../../assets/img/facebook.png" class="" width="30" height="30" alt="">
-                <a href="#" class="text-footer">
+                <a href="/assets/img/facebookMC.jpg" class="text-footer">
                     <p class="ml-2">Manga Chōsa</p>
                 </a>
             </div>
             <div class="d-flex align-item-center mt-4">
                 <img src="../../assets/img/insta.png" class="" width="30" height="30" alt="">
-                <a href="#" class="text-footer">
+                <a href="/assets/img/instaMC.jpg" class="text-footer">
                     <p class="ml-2">Manga Chōsa</p>
                 </a>
             </div>
