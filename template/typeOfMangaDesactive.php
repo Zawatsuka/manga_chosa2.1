@@ -9,7 +9,7 @@
                             <div class="dropdown-menu"
                             aria-labelledby="dropdownMenuButton">
                             <?php foreach($getListTypeDesactive as $value){?>
-                                <a class="dropdown-item" href="/index.php?idType=<?=$value->id; ?>">
+                                <a class="dropdown-item" href="/controllers/lastSurveyCtrl.php?idType=<?=$value->id; ?>">
                                 <?=$value->typeofmanga; ?>
                                 </a>
                                 <?php

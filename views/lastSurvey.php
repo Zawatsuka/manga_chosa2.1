@@ -6,7 +6,7 @@ ob_start();
     <!-- sondage -->
     <?php
     // var_dump($viewSurveyDesactive);
-    include(dirname(__FILE__).'/template/typeOfMangaDesactive.php');
+    include(dirname(__FILE__)."/../template/typeOfMangaDesactive.php");
     foreach($viewSurveyDesactive as $value){
         ?>
     <div class="row ">
