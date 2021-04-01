@@ -23,10 +23,10 @@
         <!-- partie droite du footer  -->
         <div class="col-6 col-sm-6  col-md-6 d-flex justify-content-end text-left">
             <div class="mt-4">
-                <a href="#" class="text-footer">
+                <a href="/views/Politiquedeconfidentialité.php" class="text-footer">
                     <p>Politique de confidentialité</p>
                 </a>
-                <a href="#" class="text-footer">
+                <a href="/views/mentionlegales.php" class="text-footer">
                     <p>Mentions légales</p>
                 </a>
             </div>
